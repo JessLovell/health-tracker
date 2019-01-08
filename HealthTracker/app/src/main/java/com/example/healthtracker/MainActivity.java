@@ -38,39 +38,37 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void stopWatch(View v){
-
-        ImageButton playButton = findViewById(R.id.imageButton);
-
-        PrimeThread watch = new PrimeThread();
-        watch.start();
-
-        if (playButton.getContentDescription() == "Play"){
-            //start the stop watch.
-
-
-            //playButton.setContentDescription("Pause");
-            //change image to pause
-//            playButton.setImageResource(R.drawable.c_media_pause);
-        } else if (playButton.getContentDescription() == "Pause"){
-            //Stop the watch
-
-            playButton.setContentDescription("Play");
-            //Change the image to play
-        }
-    }
-
-    public void resetWatch(View v){
-
-        ImageButton playButton = findViewById(R.id.imageButton);
-
-        if (playButton.getContentDescription() == "Pause"){
-            //reset the stop watch
-        }
-    }
-
-
-}
+//    public void stopWatch(View v){
+//
+//        ImageButton playButton = findViewById(R.id.imageButton);
+//
+//        PrimeThread watch = new PrimeThread();
+//        watch.start();
+//
+//        if (playButton.getContentDescription() == "Play"){
+//            //start the stop watch.
+//
+//
+//            //playButton.setContentDescription("Pause");
+//            //change image to pause
+////            playButton.setImageResource(R.drawable.c_media_pause);
+//        } else if (playButton.getContentDescription() == "Pause"){
+//            //Stop the watch
+//
+//            playButton.setContentDescription("Play");
+//            //Change the image to play
+//        }
+//    }
+//
+//    public void resetWatch(View v){
+//
+//        ImageButton playButton = findViewById(R.id.imageButton);
+//
+//        if (playButton.getContentDescription() == "Pause"){
+//            //reset the stop watch
+//        }
+//    }
+//}
 
 class PrimeThread extends Thread {
 
