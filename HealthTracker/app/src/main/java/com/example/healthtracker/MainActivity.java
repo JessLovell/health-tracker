@@ -6,6 +6,9 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -39,10 +42,14 @@ public class MainActivity extends AppCompatActivity {
 
         ImageButton playButton = findViewById(R.id.imageButton);
 
+        PrimeThread watch = new PrimeThread();
+        watch.start();
+
         if (playButton.getContentDescription() == "Play"){
             //start the stop watch.
 
-            playButton.setContentDescription("Pause");
+
+            //playButton.setContentDescription("Pause");
             //change image to pause
 //            playButton.setImageResource(R.drawable.c_media_pause);
         } else if (playButton.getContentDescription() == "Pause"){
@@ -60,6 +67,29 @@ public class MainActivity extends AppCompatActivity {
         if (playButton.getContentDescription() == "Pause"){
             //reset the stop watch
         }
+    }
+
+
+}
+
+class PrimeThread extends Thread {
+
+    int secondsPassed;
+    Timer timer;
+    TimerTask task = new TimerTask() {
+        @Override
+        public void run() {
+            secondsPassed++;
+            System.out.println("time: "+secondsPassed);
+        }
+    };
+
+    PrimeThread() {
+        this.timer = new Timer();
+    }
+
+    public void run() {
+        timer.scheduleAtFixedRate(task, 1000, 1000);
     }
 
 }
