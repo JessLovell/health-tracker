@@ -10,4 +10,8 @@
 - [System.currentTimeMills](https://www.tutorialspoint.com/java/lang/system_currenttimemillis.htm)
 
 ## Daily Change Log
-Day 1: 
+- Day 1:
+    - Complete Finger Exercises and Stretch Goal
+    - Research Toggle Buttons - get nowhere after 1 hr
+    - Research threads and timers - computer crashes, lunch time.
+
