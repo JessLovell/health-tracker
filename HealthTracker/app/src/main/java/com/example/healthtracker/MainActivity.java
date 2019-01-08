@@ -3,6 +3,7 @@ package com.example.healthtracker;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,8 +33,33 @@ public class MainActivity extends AppCompatActivity {
             message.setText("Get those thumbs clicking!");
             textview.setText(click);
         }
-
-        System.out.println("click");
-
     }
+
+    public void stopWatch(View v){
+
+        ImageButton playButton = findViewById(R.id.imageButton);
+
+        if (playButton.getContentDescription() == "Play"){
+            //start the stop watch.
+
+            playButton.setContentDescription("Pause");
+            //change image to pause
+//            playButton.setImageResource(R.drawable.c_media_pause);
+        } else if (playButton.getContentDescription() == "Pause"){
+            //Stop the watch
+
+            playButton.setContentDescription("Play");
+            //Change the image to play
+        }
+    }
+
+    public void resetWatch(View v){
+
+        ImageButton playButton = findViewById(R.id.imageButton);
+
+        if (playButton.getContentDescription() == "Pause"){
+            //reset the stop watch
+        }
+    }
+
 }
