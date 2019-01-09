@@ -8,6 +8,10 @@
 - [Android Buttons](https://developer.android.com/guide/topics/ui/controls/button)
 - [Android UI Events](https://developer.android.com/guide/topics/ui/ui-events.html)
 - [System.currentTimeMills](https://www.tutorialspoint.com/java/lang/system_currenttimemillis.htm)
+- [Puppy Sleeping Image](https://unsplash.com/photos/BHO7K8Zf16w)
+- [Vegetables Image](https://unsplash.com/photos/sTPy-oeA3h0)
+- [Hydrate Water Image](https://unsplash.com/photos/_IiwQMmgbZ8)
+- [Track Runners Image](https://unsplash.com/photos/atSaEOeE8Nk)
 
 ## Daily Change Log
 - Day 1:
