@@ -34,7 +34,13 @@ public class MainActivity extends AppCompatActivity {
     ImageListener imageListener = new ImageListener() {
         @Override
         public void setImageForPosition(int position, ImageView imageView) {
+            TextView textView = findViewById(R.id.textView);
+            String[] imageText = {"Exercise is important!",
+                    "Get Lots of sleep so you can be the most productive.",
+                    "Eat fruits and veggies to get more energy.", "Stay hydrated!" };
+
             imageView.setImageResource(sampleImages[position]);
+            textView.setText(imageText[position]);
         }
     };
 
