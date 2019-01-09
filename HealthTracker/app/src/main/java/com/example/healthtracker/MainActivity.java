@@ -19,23 +19,12 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    //FINGER EXERCISE
-    private int click = 0;
-
     //CAROUSEL
     CarouselView carouselView;
     int[] sampleImages = {R.drawable.exercise, R.drawable.sleep, R.drawable.vegggies, R.drawable.water};
     String[] imageText = {"Exercise is important!",
             "Get Lots of sleep so you can be the most productive.",
             "Eat fruits and veggies to get more energy.", "Stay hydrated!" };
-
-
-    //STOP WATCH
-    TextView timer ;
-    Button start, pause, reset;
-    long MillisecondTime, StartTime, TimeBuff, UpdateTime = 0L ;
-    Handler handler;
-    int Seconds, Minutes, MilliSeconds ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,24 +48,14 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-
-    public void fingerExercise(View v){
-
-        TextView message = findViewById(R.id.textView2);
-        this.click++;
-        String text = "Get those fingers clicking! ";
-
-        if (this.click % 50 == 0 && click != 0){
-            text = "Look at those slim fingers! ";
-        } else if (click % 10 == 0){
-            text = "The fat is melting away! ";
-        }
-        message.setText(text + click);
-    }
-
-    public void stopWatchClicked(View v) {
+    public void stopWatchClick(View v) {
         Intent stopWatch = new Intent(this, StopWatch.class);
         startActivity(stopWatch);
+    }
+
+    public void onFingerExerciseClick(View v){
+        Intent fingerExercise = new Intent(this, FingerExercise.class);
+        startActivity(fingerExercise);
     }
 }
 

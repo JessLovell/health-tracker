@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StopWatch"></activity>
+        <activity android:name=".StopWatch" />
+        <activity android:name=".FingerExercise"></activity>
     </application>
 
 </manifest>
