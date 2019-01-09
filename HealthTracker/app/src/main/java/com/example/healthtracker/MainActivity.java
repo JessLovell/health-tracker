@@ -16,12 +16,27 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity {
 
     private int click = 0;
+    CarouselView carouselView;
+
+    int[] sampleImages = {R.drawable.exercise, R.drawable.sleep, R.drawable.vegggies, R.drawable.water};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        carouselView = (CarouselView) findViewById(R.id.carouselView);
+        carouselView.setPageCount(sampleImages.length);
+
+        carouselView.setImageListener(imageListener);
     }
+
+    ImageListener imageListener = new ImageListener() {
+        @Override
+        public void setImageForPosition(int position, ImageView imageView) {
+            imageView.setImageResource(sampleImages[position]);
+        }
+    };
 
     public void fingerExercise(View v){
 
@@ -35,32 +50,6 @@ public class MainActivity extends AppCompatActivity {
             text = "The fat is melting away! ";
         }
         message.setText(text + click);
-    }
-
-    public class SampleCarouselViewActivity extends AppCompatActivity {
-
-        CarouselView carouselView;
-
-        int[] sampleImages = {R.drawable.exercise, R.drawable.sleep, R.drawable.vegggies, R.drawable.water};
-
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-
-            carouselView = (CarouselView) findViewById(R.id.carouselView);
-            carouselView.setPageCount(sampleImages.length);
-
-            carouselView.setImageListener(imageListener);
-        }
-
-        ImageListener imageListener = new ImageListener() {
-            @Override
-            public void setImageForPosition(int position, ImageView imageView) {
-                imageView.setImageResource(sampleImages[position]);
-            }
-        };
-
     }
 }
 
