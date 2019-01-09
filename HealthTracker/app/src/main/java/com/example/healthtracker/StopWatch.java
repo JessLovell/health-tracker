@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+//This code from: https://www.c-sharpcorner.com/article/creating-stop-watch-android-application-tutorial/
 public class StopWatch extends AppCompatActivity {
 
     TextView timer ;
@@ -19,7 +20,7 @@ public class StopWatch extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_stop_watch);
 
         timer = (TextView)findViewById(R.id.tvTimer);
         start = (Button)findViewById(R.id.btStart);

@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         public void setImageForPosition(int position, ImageView imageView) {
             TextView textView = (TextView) findViewById(R.id.textView);
             textView.setText(imageText[position]);
+
             imageView.setImageResource(sampleImages[position]);
         }
     };
