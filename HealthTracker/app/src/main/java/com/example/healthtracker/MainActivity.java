@@ -1,5 +1,6 @@
 package com.example.healthtracker;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
@@ -70,6 +71,11 @@ public class MainActivity extends AppCompatActivity {
             text = "The fat is melting away! ";
         }
         message.setText(text + click);
+    }
+
+    public void stopWatchClicked(View v) {
+        Intent stopWatch = new Intent(this, StopWatch.class);
+        startActivity(stopWatch);
     }
 }
 
