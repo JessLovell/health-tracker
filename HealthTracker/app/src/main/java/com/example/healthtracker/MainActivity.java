@@ -1,8 +1,11 @@
 package com.example.healthtracker;
 
+import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,34 +18,45 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
+    //FINGER EXERCISE
     private int click = 0;
-    CarouselView carouselView;
 
+    //CAROUSEL
+    CarouselView carouselView;
     int[] sampleImages = {R.drawable.exercise, R.drawable.sleep, R.drawable.vegggies, R.drawable.water};
+    String[] imageText = {"Exercise is important!",
+            "Get Lots of sleep so you can be the most productive.",
+            "Eat fruits and veggies to get more energy.", "Stay hydrated!" };
+
+
+    //STOP WATCH
+    TextView timer ;
+    Button start, pause, reset;
+    long MillisecondTime, StartTime, TimeBuff, UpdateTime = 0L ;
+    Handler handler;
+    int Seconds, Minutes, MilliSeconds ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //for the carousel
         carouselView = (CarouselView) findViewById(R.id.carouselView);
         carouselView.setPageCount(sampleImages.length);
-
         carouselView.setImageListener(imageListener);
     }
 
+    //directions from carousel Library
     ImageListener imageListener = new ImageListener() {
         @Override
         public void setImageForPosition(int position, ImageView imageView) {
-            TextView textView = findViewById(R.id.textView);
-            String[] imageText = {"Exercise is important!",
-                    "Get Lots of sleep so you can be the most productive.",
-                    "Eat fruits and veggies to get more energy.", "Stay hydrated!" };
-
-            imageView.setImageResource(sampleImages[position]);
+            TextView textView = (TextView) findViewById(R.id.textView);
             textView.setText(imageText[position]);
+            imageView.setImageResource(sampleImages[position]);
         }
     };
+
 
     public void fingerExercise(View v){
 
@@ -59,56 +73,3 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-//    public void stopWatch(View v){
-//
-//        ImageButton playButton = findViewById(R.id.imageButton);
-//
-//        PrimeThread watch = new PrimeThread();
-//        watch.start();
-//
-//        if (playButton.getContentDescription() == "Play"){
-//            //start the stop watch.
-//
-//
-//            //playButton.setContentDescription("Pause");
-//            //change image to pause
-////            playButton.setImageResource(R.drawable.c_media_pause);
-//        } else if (playButton.getContentDescription() == "Pause"){
-//            //Stop the watch
-//
-//            playButton.setContentDescription("Play");
-//            //Change the image to play
-//        }
-//    }
-//
-//    public void resetWatch(View v){
-//
-//        ImageButton playButton = findViewById(R.id.imageButton);
-//
-//        if (playButton.getContentDescription() == "Pause"){
-//            //reset the stop watch
-//        }
-//    }
-//}
-
-//class PrimeThread extends Thread {
-//
-//    int secondsPassed;
-//    Timer timer;
-//    TimerTask task = new TimerTask() {
-//        @Override
-//        public void run() {
-//            secondsPassed++;
-//            System.out.println("time: "+secondsPassed);
-//        }
-//    };
-//
-//    PrimeThread() {
-//        this.timer = new Timer();
-//    }
-//
-//    public void run() {
-//        timer.scheduleAtFixedRate(task, 1000, 1000);
-//    }
-//
-//}

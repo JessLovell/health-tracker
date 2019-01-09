@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <com.synnapps.carouselview.CarouselView
+        android:id="@+id/carouselView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:fillColor="#FFFFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:pageColor="#00000000"
+        app:radius="6dp"
+        app:slideInterval="3000"
+        app:strokeColor="#FF777777"
+        app:strokeWidth="1dp" />
+
     <Button
         android:id="@+id/button"
         android:layout_width="0dp"
@@ -36,29 +51,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.synnapps.carouselview.CarouselView
-        android:id="@+id/carouselView"
+        android:id="@+id/textCarousel"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="100dp"
         app:fillColor="#FFFFFFFF"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:pageColor="#00000000"
         app:radius="6dp"
         app:slideInterval="3000"
         app:strokeColor="#FF777777"
-        app:strokeWidth="1dp" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="8dp"
-        android:text="TextView"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/carouselView" />
+        app:strokeWidth="1dp"
+        tools:layout_editor_absoluteY="216dp" />
 
 
 </android.support.constraint.ConstraintLayout>
