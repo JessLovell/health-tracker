@@ -11,6 +11,8 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
+    private int click = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,24 +21,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void fingerExercise(View v){
 
-        TextView textview = findViewById(R.id.textView);
         TextView message = findViewById(R.id.textView2);
+        this.click++;
+        String text = "Get those fingers clicking! ";
 
-
-        int click = Integer.parseInt(textview.getText().toString());
-        click++;
-
-        if (click % 50 == 0 && click != 0){
-            message.setText("Look at those slim fingers!");
-            textview.setText(click);
+        if (this.click % 50 == 0 && click != 0){
+            text = "Look at those slim fingers! ";
         } else if (click % 10 == 0){
-            message.setText("The fat is melting away!");
-            textview.setText(click);
-        } else{
-            message.setText("Get those thumbs clicking!");
-            textview.setText(click);
+            text = "The fat is melting away! ";
         }
+        message.setText(text + click);
     }
+}
 
 //    public void stopWatch(View v){
 //
@@ -70,24 +66,24 @@ public class MainActivity extends AppCompatActivity {
 //    }
 //}
 
-class PrimeThread extends Thread {
-
-    int secondsPassed;
-    Timer timer;
-    TimerTask task = new TimerTask() {
-        @Override
-        public void run() {
-            secondsPassed++;
-            System.out.println("time: "+secondsPassed);
-        }
-    };
-
-    PrimeThread() {
-        this.timer = new Timer();
-    }
-
-    public void run() {
-        timer.scheduleAtFixedRate(task, 1000, 1000);
-    }
-
-}
+//class PrimeThread extends Thread {
+//
+//    int secondsPassed;
+//    Timer timer;
+//    TimerTask task = new TimerTask() {
+//        @Override
+//        public void run() {
+//            secondsPassed++;
+//            System.out.println("time: "+secondsPassed);
+//        }
+//    };
+//
+//    PrimeThread() {
+//        this.timer = new Timer();
+//    }
+//
+//    public void run() {
+//        timer.scheduleAtFixedRate(task, 1000, 1000);
+//    }
+//
+//}
