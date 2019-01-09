@@ -7,7 +7,7 @@
 - **Health Notifications:** Create a new activity for Notifications. Allow users to set up reminders to drink water, which should appear every 2 hours in the notification bar. (For testing, you might want to shorten this to 15 or 30 seconds.)
 - **Styling:** Apply consistent styling across the various Activities in your app. Make sure they have a consistent look and feel, and that buttons are in similar locations on each screen.
 
-![Home Page of HealthTracker](../resources/home.png)
+![Home Page of HealthTracker](/resources/home.png)
 ![Finger Exerciser Page](/resources/fingers.png)
 ![StopWatch Page](/resources/stopwatch.png)
 
