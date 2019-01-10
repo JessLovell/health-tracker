@@ -1,7 +1,6 @@
 package com.example.healthtracker;
 
 import android.app.AlarmManager;
-import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -41,11 +40,8 @@ public class Notifications extends AppCompatActivity {
 
         // schedule pending intent for happen later
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP + 3000, SystemClock.elapsedRealtime(), pendingIntent);
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + 3000, pendingIntent);
 
         System.out.println("sent");
-
-//        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-//        notificationManager.notify(notificationID++, myBuilder.build());
     }
 }
