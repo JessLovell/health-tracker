@@ -18,5 +18,6 @@ public class NotificationReciever extends BroadcastReceiver {
         Notification n = intent.getParcelableExtra("notification");
         int id = intent.getIntExtra("notification_id", 0);
         notificationManager.notify(id, n);
+        System.out.println("Notification received");
     }
 }
