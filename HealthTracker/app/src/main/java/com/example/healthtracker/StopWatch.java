@@ -33,26 +33,21 @@ public class StopWatch extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                StartTime = SystemClock.uptimeMillis();
-                handler.postDelayed(runnable, 0);
-
-                reset.setEnabled(false);
-
-            }
-        });
-
-        pause.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                TimeBuff += MillisecondTime;
-
-                handler.removeCallbacks(runnable);
-
-                reset.setEnabled(true);
+                if (start.getText() == "Start"){
+                    StartTime = SystemClock.uptimeMillis();
+                    handler.postDelayed(runnable, 0);
+                    reset.setEnabled(false);
+                    start.setText("Pause");
+                } else {
+                    TimeBuff += MillisecondTime;
+                    handler.removeCallbacks(runnable);
+                    reset.setEnabled(true);
+                    start.setText("Start");
+                }
 
             }
         });
+        
 
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
