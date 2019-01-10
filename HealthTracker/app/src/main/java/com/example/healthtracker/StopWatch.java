@@ -24,7 +24,6 @@ public class StopWatch extends AppCompatActivity {
 
         timer = (TextView)findViewById(R.id.tvTimer);
         start = (Button)findViewById(R.id.btStart);
-        pause = (Button)findViewById(R.id.btPause);
         reset = (Button)findViewById(R.id.btReset);
 
         handler = new Handler() ;
@@ -47,7 +46,7 @@ public class StopWatch extends AppCompatActivity {
 
             }
         });
-        
+
 
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
