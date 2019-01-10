@@ -27,7 +27,7 @@ public class Notifications extends AppCompatActivity {
     public void sendNotification(View v){
         NotificationCompat.Builder myBuilder =
                 new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.water)
+                .setSmallIcon(R.drawable.notification_icon)
                 .setContentTitle("Health Tracker")
                 .setContentText("Hydrate!")
                 .setStyle(new NotificationCompat.BigTextStyle().bigText("Drink some water!"))
@@ -42,6 +42,7 @@ public class Notifications extends AppCompatActivity {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + 5000, pendingIntent);
 
+        System.out.println("sent");
 
 //        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
 //        notificationManager.notify(notificationID++, myBuilder.build());
