@@ -55,5 +55,10 @@ public class MainActivity extends AppCompatActivity {
         Intent fingerExerciseIntent = new Intent(this, FingerExercises.class);
         startActivity(fingerExerciseIntent);
     }
+
+    public void onRemindersClick(View v) {
+        Intent remindersIntent = new Intent(this, Notifications.class);
+        startActivity(remindersIntent);
+    }
 }
 

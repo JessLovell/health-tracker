@@ -16,8 +16,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StopWatch" />
-        <activity android:name=".FingerExercises"></activity>
+        <activity
+            android:name=".StopWatch"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".FingerExercises"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Notifications"
+            android:parentActivityName=".MainActivity" />
+
+        <receiver
+            android:name=".NotificationReciever"
+            android:enabled="true"
+            android:exported="true"></receiver>
     </application>
 
 </manifest>
