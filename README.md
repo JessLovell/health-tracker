@@ -41,5 +41,8 @@
     - Create new Activity FingerExercises
         - when helping others with intents, weird bugs came up. Spent an hour fixin' it.
 
+- Day 3:
+    - Add `back` button to nav bar
+    
 
 
