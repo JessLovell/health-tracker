@@ -42,11 +42,10 @@
         - Need to cycle through quotes.
     - Create new Activity STOPWATCH!
     - Create new Activity FingerExercises
-        - when helping others with intents, weird bugs came up. Spent an hour fixin' it.
 
 - Day 3:
     - Add `back` button to nav bar
     - Work on notifications - maybe it works?  ¯\_(ツ)_/¯
-    - Decide to work on :sparkles:styling:sparkles: and :watch:
+    - Decide to work on :sparkles:styling:sparkles: and :watch: (find md emojies)
 
 
