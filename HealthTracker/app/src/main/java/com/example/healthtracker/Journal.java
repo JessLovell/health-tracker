@@ -3,13 +3,22 @@ package com.example.healthtracker;
 import android.arch.persistence.room.Room;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class Journal extends AppCompatActivity {
 
     private ExerciseDatabase exerciseDatabase;
+
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +35,24 @@ public class Journal extends AppCompatActivity {
             exerciseDatabase.exerciseDao().add(exercise);
         }
 
-        TextView textView = findViewById(R.id.textView5);
-        Exercise output = exerciseDatabase.exerciseDao().getById(0);
-        textView.setText(output.timestamp + ": " + output.title);
+
+        recyclerView = (RecyclerView) findViewById(R.id.journalRecycler);
+
+        recyclerView.setHasFixedSize(true);
+        // use a linear layout manager
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        List<String> input = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            input.add("Test" + i);
+        }
+        // define an adapter
+        mAdapter = new MyAdapter(exerciseDatabase.exerciseDao().getAll());
+        recyclerView.setAdapter(mAdapter);
+
+    }
+
+    public void addJournalEntry(View v){
+
     }
 }

@@ -22,6 +22,7 @@
 - [Carousel Library](https://github.com/sayyam/carouselview)
 - [StopWatchTutorial](https://www.c-sharpcorner.com/article/creating-stop-watch-android-application-tutorial/)
 - [Room Tutorial](https://medium.freecodecamp.org/room-sqlite-beginner-tutorial-2e725e47bfab)
+- [Recycler Views](http://www.vogella.com/tutorials/AndroidRecyclerView/article.html)
 
 
 ### Images
@@ -37,20 +38,18 @@
     - Complete Finger Exercises and Stretch Goal
     - Research Toggle Buttons - get nowhere after 1 hr
     - Research threads and timers - computer crashes, lunch time.
-
 - Day 2:
     - Complete Image Carousel (import this Library!) - 2 hours researching and implementing
         - Need to cycle through quotes.
     - Create new Activity STOPWATCH!
     - Create new Activity FingerExercises
-
 - Day 3:
     - Add `back` button to nav bar
     - Work on notifications - maybe it works?  ¯\_(ツ)_/¯
     - Decide to work on :sparkles:styling:sparkles: and :watch: (find md emojies)
 - Saturday:
     - Fix Stopwatch formatting
-    - Notifications work on phone
-    - Work on exercise database
+    - Notifications work on test phone
+    - Setup the database for Exercise Journal
 
 

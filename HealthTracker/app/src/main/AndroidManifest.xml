@@ -31,7 +31,8 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".Journal"></activity>
+        <activity android:name=".Journal"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>
