@@ -60,5 +60,10 @@ public class MainActivity extends AppCompatActivity {
         Intent remindersIntent = new Intent(this, Notifications.class);
         startActivity(remindersIntent);
     }
+
+    public void onJournalClick(View v) {
+        Intent journalIntent = new Intent(this, Journal.class);
+        startActivity(journalIntent);
+    }
 }
 

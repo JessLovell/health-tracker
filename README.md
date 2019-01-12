@@ -21,7 +21,8 @@
 - [StopWatchTutorial](https://www.c-sharpcorner.com/article/creating-stop-watch-android-application-tutorial/)
 - [Carousel Library](https://github.com/sayyam/carouselview)
 - [StopWatchTutorial](https://www.c-sharpcorner.com/article/creating-stop-watch-android-application-tutorial/)
-- [Carousel Library](https://github.com/sayyam/carouselview)
+- [Room Tutorial](https://medium.freecodecamp.org/room-sqlite-beginner-tutorial-2e725e47bfab)
+
 
 ### Images
 - [Puppy Sleeping Image](https://unsplash.com/photos/BHO7K8Zf16w)
@@ -47,5 +48,9 @@
     - Add `back` button to nav bar
     - Work on notifications - maybe it works?  ¯\_(ツ)_/¯
     - Decide to work on :sparkles:styling:sparkles: and :watch: (find md emojies)
+- Saturday:
+    - Fix Stopwatch formatting
+    - Notifications work on phone
+    - Work on exercise database
 
 
