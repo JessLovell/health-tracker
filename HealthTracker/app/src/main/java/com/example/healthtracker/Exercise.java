@@ -6,18 +6,18 @@ import android.arch.persistence.room.PrimaryKey;
 @Entity
 public class Exercise {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public long id;
 
     public String title;
-    public int quantity;
+    public String quantity;
     public String description;
     public String timestamp;
 
     public Exercise(){
     }
 
-    public Exercise(String title, int quantity, String description, String timestamp){
+    public Exercise(String title, String quantity, String description, String timestamp){
         this.title = title;
         this.quantity = quantity;
         this.description = description;

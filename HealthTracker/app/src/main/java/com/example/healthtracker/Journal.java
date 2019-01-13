@@ -32,7 +32,7 @@ public class Journal extends AppCompatActivity {
 
         //Help from Nick Crain here
         if (exerciseDatabase.exerciseDao().getById(0) == null){
-            Exercise exercise = new Exercise("Breathing Exercises", 512, "Deep breathing for 3 mins", "1/10/2019 14:04");
+            Exercise exercise = new Exercise("Breathing Exercises", "512", "Deep breathing for 3 mins", "1/10/2019 14:04");
             exerciseDatabase.exerciseDao().add(exercise);
         }
 
@@ -54,10 +54,9 @@ public class Journal extends AppCompatActivity {
         EditText title = findViewById(R.id.editText);
         EditText description = findViewById(R.id.editText3);
         EditText quantity = findViewById(R.id.editText6);
-        int num = Integer.parseInt(quantity.toString());
         EditText timestamp = findViewById(R.id.editText5);
 
-        Exercise exercise = new Exercise(title.getText().toString(), num, description.getText().toString(), timestamp.getText().toString());
+        Exercise exercise = new Exercise(title.getText().toString(), quantity.getText().toString(), description.getText().toString(), timestamp.getText().toString());
         exerciseDatabase.exerciseDao().add(exercise);
     }
 }
