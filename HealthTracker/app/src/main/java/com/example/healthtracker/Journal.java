@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class Journal extends AppCompatActivity {
@@ -31,10 +32,7 @@ public class Journal extends AppCompatActivity {
 
 
         //Help from Nick Crain here
-        if (exerciseDatabase.exerciseDao().getById(0) == null){
-            Exercise exercise = new Exercise("Breathing Exercises", "512", "Deep breathing for 3 mins", "1/10/2019 14:04");
-            exerciseDatabase.exerciseDao().add(exercise);
-        }
+
 
         recyclerView = (RecyclerView) findViewById(R.id.journalRecycler);
         recyclerView.setHasFixedSize(true);
@@ -51,12 +49,15 @@ public class Journal extends AppCompatActivity {
 
     public void addJournalEntry(View v){
 
-        EditText title = findViewById(R.id.editText);
-        EditText description = findViewById(R.id.editText3);
-        EditText quantity = findViewById(R.id.editText6);
-        EditText timestamp = findViewById(R.id.editText5);
+        EditText title = findViewById(R.id.editText4);
+        EditText description = findViewById(R.id.editText6);
+        EditText quantity = findViewById(R.id.editText5);
+        String timestamp = new Date().toString();
 
-        Exercise exercise = new Exercise(title.getText().toString(), quantity.getText().toString(), description.getText().toString(), timestamp.getText().toString());
+        Exercise exercise = new Exercise(title.getText().toString(), quantity.getText().toString(), description.getText().toString(), timestamp);
         exerciseDatabase.exerciseDao().add(exercise);
+
+        finish();
+        startActivity(getIntent());
     }
 }

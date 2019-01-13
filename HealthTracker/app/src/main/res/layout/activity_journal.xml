@@ -22,68 +22,41 @@
             android:textAlignment="center"
             android:textSize="24sp" />
 
+        <EditText
+            android:id="@+id/editText4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Journal Title"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/editText5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Quantity"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/editText6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Exercise Description"
+            android:inputType="textMultiLine" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="addJournalEntry"
+            android:text="Add Journal Entry" />
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/journalRecycler"
             android:layout_width="match_parent"
-            android:layout_height="164dp"
-            android:layout_weight="0"
-            android:scrollbars="vertical" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/button7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="addJournalEntry"
-                android:text="Create Journal Entry" />
-
-            <EditText
-                android:id="@+id/editText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Journal Title" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="69dp"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/editText6"
-                    android:layout_width="92dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:ems="10"
-                    android:inputType="number"
-                    android:text="Quantity" />
-
-                <EditText
-                    android:id="@+id/editText5"
-                    android:layout_width="166dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:ems="10"
-                    android:inputType="date"
-                    android:text="Date"
-                    android:textAlignment="viewStart" />
-
-            </LinearLayout>
-
-            <EditText
-                android:id="@+id/editText3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textMultiLine"
-                android:text="Exercise Activity Description" />
-
-        </LinearLayout>
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
