@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -35,17 +36,13 @@ public class Journal extends AppCompatActivity {
             exerciseDatabase.exerciseDao().add(exercise);
         }
 
-
         recyclerView = (RecyclerView) findViewById(R.id.journalRecycler);
-
         recyclerView.setHasFixedSize(true);
+
         // use a linear layout manager
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        List<String> input = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            input.add("Test" + i);
-        }
+
         // define an adapter
         mAdapter = new MyAdapter(exerciseDatabase.exerciseDao().getAll());
         recyclerView.setAdapter(mAdapter);
@@ -54,5 +51,13 @@ public class Journal extends AppCompatActivity {
 
     public void addJournalEntry(View v){
 
+        EditText title = findViewById(R.id.editText);
+        EditText description = findViewById(R.id.editText3);
+        EditText quantity = findViewById(R.id.editText6);
+        int num = Integer.parseInt(quantity.toString());
+        EditText timestamp = findViewById(R.id.editText5);
+
+        Exercise exercise = new Exercise(title.getText().toString(), num, description.getText().toString(), timestamp.getText().toString());
+        exerciseDatabase.exerciseDao().add(exercise);
     }
 }
