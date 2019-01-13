@@ -20,6 +20,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // each data item is just a string in this case
         public TextView txtHeader;
         public TextView txtFooter;
+        public TextView txtDate;
         public View layout;
 
         public ViewHolder(View v) {
@@ -27,6 +28,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             layout = v;
             txtHeader = (TextView) v.findViewById(R.id.firstLine);
             txtFooter = (TextView) v.findViewById(R.id.secondLine);
+            txtDate = (TextView) v.findViewById(R.id.textView9);
         }
     }
 
@@ -65,8 +67,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         final Exercise exercise = values.get(position);
-        holder.txtHeader.setText(exercise.title);
-        holder.txtFooter.setText("Exercise: " + exercise.description);
+        holder.txtHeader.setText(exercise.title + ", " + exercise.quantity );
+        holder.txtFooter.setText("Description: " + exercise.description);
+        holder.txtDate.setText(exercise.timestamp);
     }
 
     // Return the size of your dataset (invoked by the layout manager)

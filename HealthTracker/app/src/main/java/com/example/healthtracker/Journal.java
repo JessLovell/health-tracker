@@ -57,6 +57,7 @@ public class Journal extends AppCompatActivity {
         Exercise exercise = new Exercise(title.getText().toString(), quantity.getText().toString(), description.getText().toString(), timestamp);
         exerciseDatabase.exerciseDao().add(exercise);
 
+        //got this from: https://stackoverflow.com/questions/3053761/reload-activity-in-android
         finish();
         startActivity(getIntent());
     }
