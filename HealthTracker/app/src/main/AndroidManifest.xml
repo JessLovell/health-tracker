@@ -29,7 +29,11 @@
         <receiver
             android:name=".NotificationReciever"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true">
+            </receiver>
+
+        <activity android:name=".Journal"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>

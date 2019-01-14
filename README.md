@@ -13,6 +13,8 @@
 ![Home Page of HealthTracker](/resources/home.png)
 ![Finger Exerciser Page](/resources/fingers.png)
 ![StopWatch Page](/resources/stopwatch.png)
+![Notifications](/resources/notifications.png)
+![Exercise Journal](/resources/journal.png)
 
 ## Resources
 - [Android Buttons](https://developer.android.com/guide/topics/ui/controls/button)
@@ -21,7 +23,9 @@
 - [StopWatchTutorial](https://www.c-sharpcorner.com/article/creating-stop-watch-android-application-tutorial/)
 - [Carousel Library](https://github.com/sayyam/carouselview)
 - [StopWatchTutorial](https://www.c-sharpcorner.com/article/creating-stop-watch-android-application-tutorial/)
-- [Carousel Library](https://github.com/sayyam/carouselview)
+- [Room Tutorial](https://medium.freecodecamp.org/room-sqlite-beginner-tutorial-2e725e47bfab)
+- [Recycler Views](http://www.vogella.com/tutorials/AndroidRecyclerView/article.html)
+
 
 ### Images
 - [Puppy Sleeping Image](https://unsplash.com/photos/BHO7K8Zf16w)
@@ -36,16 +40,20 @@
     - Complete Finger Exercises and Stretch Goal
     - Research Toggle Buttons - get nowhere after 1 hr
     - Research threads and timers - computer crashes, lunch time.
-
 - Day 2:
     - Complete Image Carousel (import this Library!) - 2 hours researching and implementing
         - Need to cycle through quotes.
     - Create new Activity STOPWATCH!
     - Create new Activity FingerExercises
-
 - Day 3:
     - Add `back` button to nav bar
     - Work on notifications - maybe it works?  ¯\_(ツ)_/¯
     - Decide to work on :sparkles:styling:sparkles: and :watch: (find md emojies)
+- Saturday & Sunday:
+    - Fix Stopwatch formatting
+    - Notifications work on test phone
+    - Setup the database for Exercise Journal
+    - Recycler view added
+    - Add to Database works! 
 
 

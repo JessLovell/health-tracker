@@ -15,7 +15,7 @@ public class StopWatch extends AppCompatActivity {
     Button start, pause, reset;
     long MillisecondTime, StartTime, TimeBuff, UpdateTime = 0L ;
     Handler handler;
-    int Seconds, Minutes, MilliSeconds ;
+    int Hours, Seconds, Minutes, MilliSeconds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,15 +52,16 @@ public class StopWatch extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                MillisecondTime = 0L ;
-                StartTime = 0L ;
-                TimeBuff = 0L ;
-                UpdateTime = 0L ;
-                Seconds = 0 ;
-                Minutes = 0 ;
-                MilliSeconds = 0 ;
+                MillisecondTime = 0L;
+                StartTime = 0L;
+                TimeBuff = 0L;
+                UpdateTime = 0L;
+                Hours = 0;
+                Seconds = 0;
+                Minutes = 0;
+                MilliSeconds = 0;
 
-                timer.setText("00:00:00");
+                timer.setText("00.00:00.000");
 
             }
         });
@@ -72,19 +73,16 @@ public class StopWatch extends AppCompatActivity {
         public void run() {
 
             MillisecondTime = SystemClock.uptimeMillis() - StartTime;
-
             UpdateTime = TimeBuff + MillisecondTime;
 
             Seconds = (int) (UpdateTime / 1000);
-
             Minutes = Seconds / 60;
-
             Seconds = Seconds % 60;
-
             MilliSeconds = (int) (UpdateTime % 1000);
 
-            timer.setText("" + Minutes + ":"
-                    + String.format("%02d", Seconds) + ":"
+            timer.setText("" + String.format("%02d", Hours) + ":"
+                    + String.format("%02d", Minutes) + ":"
+                    + String.format("%02d", Seconds) + "."
                     + String.format("%03d", MilliSeconds));
 
             handler.postDelayed(this, 0);
