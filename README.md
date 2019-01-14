@@ -52,5 +52,6 @@
     - Notifications work on test phone
     - Setup the database for Exercise Journal
     - Recycler view added
+    - Add to Database works! 
 
 

@@ -14,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import java.util.Timer;
+
 public class Notifications extends AppCompatActivity {
 
     int notificationID = 0;
@@ -28,6 +30,7 @@ public class Notifications extends AppCompatActivity {
 
 
     public void sendNotification(View v){
+
         NotificationCompat.Builder myBuilder =
                 new NotificationCompat.Builder(Notifications.this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.notification_icon)
@@ -37,15 +40,16 @@ public class Notifications extends AppCompatActivity {
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
         Intent intent = new Intent(Notifications.this, NotificationReciever.class);
-        intent.putExtra("notification", myBuilder.build());
-        intent.putExtra("notification_id", notificationID++);
+            intent.putExtra("notification", myBuilder.build());
+            intent.putExtra("notification_id", notificationID++);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(Notifications.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         // schedule pending intent for happen later
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + 3000, pendingIntent);
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, SystemClock.elapsedRealtime(), 5000, pendingIntent);
 
         System.out.println("sent");
     }
 
 }
+
