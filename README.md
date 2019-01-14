@@ -13,8 +13,8 @@
 ![Home Page of HealthTracker](/resources/home.png)
 ![Finger Exerciser Page](/resources/fingers.png)
 ![StopWatch Page](/resources/stopwatch.png)
-![Notifications](/resources/notifications.png)
-![Exercise Journal](/resources/journal.png)
+![Notifications](/resources/notification.png)
+![Exercise Journal](/resources/journal_db.png)
 
 ## Resources
 - [Android Buttons](https://developer.android.com/guide/topics/ui/controls/button)
