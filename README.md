@@ -13,6 +13,8 @@
 ![Home Page of HealthTracker](/resources/home.png)
 ![Finger Exerciser Page](/resources/fingers.png)
 ![StopWatch Page](/resources/stopwatch.png)
+![Notifications](/resources/notifications.png)
+![Exercise Journal](/resources/journal.png)
 
 ## Resources
 - [Android Buttons](https://developer.android.com/guide/topics/ui/controls/button)
@@ -47,7 +49,7 @@
     - Add `back` button to nav bar
     - Work on notifications - maybe it works?  ¯\_(ツ)_/¯
     - Decide to work on :sparkles:styling:sparkles: and :watch: (find md emojies)
-- Saturday:
+- Saturday & Sunday:
     - Fix Stopwatch formatting
     - Notifications work on test phone
     - Setup the database for Exercise Journal
