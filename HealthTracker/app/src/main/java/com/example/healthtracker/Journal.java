@@ -1,18 +1,14 @@
 package com.example.healthtracker;
 
-import android.arch.persistence.room.Room;
-import android.support.v7.app.AppCompatActivity;
+import androidx.room.Room;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 public class Journal extends AppCompatActivity {
 
