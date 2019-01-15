@@ -43,6 +43,8 @@ public class MainActivityTest {
 
     @Test
     public void testStopWatchClicked() {
+        onView(withId(R.id.button4)).perform(click());
+        intended(hasComponent(StopWatch.class.getName()));
     }
 
     @Test
@@ -53,9 +55,13 @@ public class MainActivityTest {
 
     @Test
     public void testOnRemindersClick() {
+        onView(withId(R.id.button2)).perform(click());
+        intended(hasComponent(Notifications.class.getName()));
     }
 
     @Test
     public void testOnJournalClick() {
+        onView(withId(R.id.button6)).perform(click());
+        intended(hasComponent(Journal.class.getName()));
     }
 }
