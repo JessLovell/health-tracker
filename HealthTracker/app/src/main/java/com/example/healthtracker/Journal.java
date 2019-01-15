@@ -30,8 +30,11 @@ public class Journal extends AppCompatActivity {
         exerciseDatabase = Room.databaseBuilder(getApplicationContext(),
                 ExerciseDatabase.class, "exercise_journal").allowMainThreadQueries().build();
 
-
-        //Help from Nick Crain here
+//        if (exerciseDatabase.exerciseDao().getById(0) == null){
+//            String timestamp = new Date().toString();
+//            Exercise first = new Exercise("Title", "QTY", "description", timestamp);
+//            exerciseDatabase.exerciseDao().add(first);
+//        }
 
 
         recyclerView = (RecyclerView) findViewById(R.id.journalRecycler);
