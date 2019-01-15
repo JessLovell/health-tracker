@@ -29,7 +29,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="8dp"
-        android:text="INSPO QUOTE"
+        android:text="@string/inspo_quote"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:onClick="onFingerExerciseClick"
-            android:text="Finger Exercises" />
+            android:text="@string/finger_exercises" />
 
         <Button
             android:id="@+id/button6"
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:onClick="onJournalClick"
-            android:text="Journal" />
+            android:text="@string/journal" />
 
         <Button
             android:id="@+id/button2"
@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:onClick="onRemindersClick"
-            android:text="Reminders" />
+            android:text="@string/reminders" />
 
         <Button
             android:id="@+id/button4"
@@ -77,7 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:onClick="stopWatchClicked"
-            android:text="STOPWATCH"
+            android:text="@string/stopwatch"
             tools:layout_editor_absoluteX="100dp"
             tools:layout_editor_absoluteY="419dp" />
 
