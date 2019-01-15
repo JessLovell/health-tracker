@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">HealthTracker</string>
+    <string name="inspo_quote">INSPO QUOTE</string>
+    <string name="finger_exercises">Finger Exercises</string>
+    <string name="journal">Journal</string>
+    <string name="reminders">Reminders</string>
+    <string name="stopwatch">STOPWATCH</string>
+    <string name="exercise">Exercise!</string>
+    <string name="get_those_thumbs_clicking">Get those thumbs clicking!</string>
 </resources>

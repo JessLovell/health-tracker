@@ -25,6 +25,9 @@
 - [StopWatchTutorial](https://www.c-sharpcorner.com/article/creating-stop-watch-android-application-tutorial/)
 - [Room Tutorial](https://medium.freecodecamp.org/room-sqlite-beginner-tutorial-2e725e47bfab)
 - [Recycler Views](http://www.vogella.com/tutorials/AndroidRecyclerView/article.html)
+- [Espresso Testing Tutorial](https://medium.com/mindorks/android-testing-part-1-espresso-basics-7219b86c862b)
+- [Android Espresso Docs](https://developer.android.com/training/testing/espresso/)
+- [Unlock Screen During Testing](https://stackoverflow.com/questions/30596446/espresso-test-fails-with-noactivityresumedexception-often) 
 
 
 ### Images
@@ -54,6 +57,8 @@
     - Notifications work on test phone
     - Setup the database for Exercise Journal
     - Recycler view added
-    - Add to Database works! 
+    - Add to Database works!
+- Day 4:
+    - Create Testing for Main Activity (discovered that :phone: screen must be unlocked to run tests :laughing:)
 
 
