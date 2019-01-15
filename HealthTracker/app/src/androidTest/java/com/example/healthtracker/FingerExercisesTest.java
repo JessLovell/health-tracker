@@ -41,7 +41,6 @@ public class FingerExercisesTest {
     public void testFingerExercise() {
 
         //Test that things change when button is clicked
-
         for (int i = 1; i < 101; i++){
             onView(withId(R.id.button)).perform(click());
 
@@ -56,6 +55,5 @@ public class FingerExercisesTest {
                         .check(matches(isDisplayed()));
             }
         }
-
     }
 }
