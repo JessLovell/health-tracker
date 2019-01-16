@@ -14,8 +14,8 @@
 ![Finger Exerciser Page](/resources/finger_ex.png)
 ![StopWatch Page](/resources/stopwatcher.png)
 ![Exercise Journal](/resources/journal.png)
-![Notifications](/resources/notification.png)
 ![Notifications](/resources/set_notification.png)
+![Notifications](/resources/notification.png)
 
 ## Resources
 - [Android Buttons](https://developer.android.com/guide/topics/ui/controls/button)
@@ -64,7 +64,7 @@
 - Day 5:
     - Testing for Journal and Database
     - Styling & Layout
-    - Computer crashed
+    - Computer crashed :sob:
 
 
 
