@@ -2,6 +2,8 @@ package com.example.healthtracker;
 
 import org.junit.Test;
 
+import androidx.room.Room;
+
 import static org.junit.Assert.*;
 
 /**

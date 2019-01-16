@@ -17,6 +17,10 @@ public interface ExerciseDao {
     @Query("SELECT * FROM exercise WHERE id = :id")
     Exercise getById(long id);
 
+    //This code from https://stackoverflow.com/questions/5191503/how-to-select-the-last-record-of-a-table-in-sql
+    @Query("SELECT * FROM exercise ORDER BY id DESC LIMIT 1 ")
+    Exercise getLast();
+
     @Insert
     void add(Exercise exercise);
 

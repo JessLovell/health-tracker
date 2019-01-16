@@ -35,6 +35,8 @@ public class FingerExercisesTest {
                 .check(matches(isDisplayed()));
         onView(allOf(withId(R.id.button), withText("Exercise!")))
                 .check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.textView5), withText("0")))
+                .check(matches(isDisplayed()));
     }
 
     @Test
@@ -45,15 +47,17 @@ public class FingerExercisesTest {
             onView(withId(R.id.button)).perform(click());
 
             if (i % 50 == 0 && i != 0){
-                onView(allOf(withId(R.id.textView2), withText("Look at those slim fingers! " + i)))
+                onView(allOf(withId(R.id.textView2), withText("Look at those slim fingers! ")))
                         .check(matches(isDisplayed()));
             } else if (i % 10 == 0){
-                onView(allOf(withId(R.id.textView2), withText("The fat is melting away! " + i)))
+                onView(allOf(withId(R.id.textView2), withText("The fat is melting away! ")))
                         .check(matches(isDisplayed()));
             } else {
-                onView(allOf(withId(R.id.textView2), withText("Get those fingers clicking! " + i)))
+                onView(allOf(withId(R.id.textView2), withText("Get those fingers clicking! ")))
                         .check(matches(isDisplayed()));
             }
+            onView(allOf(withId(R.id.textView5), withText(i + "")))
+                    .check(matches(isDisplayed()));
         }
     }
 }

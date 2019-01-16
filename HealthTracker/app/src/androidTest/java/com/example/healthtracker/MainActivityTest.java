@@ -41,6 +41,11 @@ public class MainActivityTest {
                 .check(matches(isDisplayed()));
         onView(allOf(withId(R.id.button4), withText("STOPWATCH")))
                 .check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.button8), withText("Back")))
+                .check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.button9), withText("Next")))
+                .check(matches(isDisplayed()));
+
     }
 
     @Test

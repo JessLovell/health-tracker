@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class StopWatch extends AppCompatActivity {
 
     TextView timer ;
-    Button start, pause, reset;
+    Button start, reset;
     long MillisecondTime, StartTime, TimeBuff, UpdateTime = 0L ;
     Handler handler;
     int Hours, Seconds, Minutes, MilliSeconds;
