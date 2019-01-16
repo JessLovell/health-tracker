@@ -4,6 +4,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.Date;
+
 import androidx.room.Room;
 import androidx.test.espresso.intent.rule.IntentsTestRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -59,8 +61,10 @@ public class JournalTest {
     @Test
     public void addToDatabase() {
 
-        for (int i = 1; i < 4; i++){
+        ExerciseDatabase testDb =  Room.databaseBuilder(getApplicationContext(),
+                ExerciseDatabase.class, "exercise_journal").allowMainThreadQueries().build();
 
+        for (int i = 1; i < 4; i++){
             onView(withId(R.id.editText4)).perform(clearText(),
                     typeText("Test Title " + i));
             onView(withId(R.id.editText5)).perform(clearText(),
@@ -69,13 +73,23 @@ public class JournalTest {
                     typeText("Test Description " + i));
             onView(withId(R.id.button7)).perform(click());
 
-            ExerciseDatabase testDb =  Room.databaseBuilder(getApplicationContext(),
-                    ExerciseDatabase.class, "exercise_journal").allowMainThreadQueries().build();
-
             Exercise testAdd = testDb.exerciseDao().getLast();
             assertEquals( "Test Title " + i, testAdd.title);
             assertEquals( "Test Description " + i, testAdd.description);
             assertEquals( i + "", testAdd.quantity);
         }
+    }
+
+    @Test
+    public void testDatabaseToString(){
+
+        Exercise one = new Exercise("Jumping Jacks", "15", "Jump in Star shape", new Date().toString());
+        Exercise two = new Exercise("Blurpees", "1", "The worst ever", new Date().toString());
+        Exercise three = new Exercise("Push ups", "180", "Arms are jello", new Date().toString());
+
+        assertEquals("Jumping Jacks, 15: Jump in Star shape", one.toString());
+        assertEquals("Blurpees, 1: The worst ever", two.toString());
+        assertEquals("Push ups, 180: Arms are jello", three.toString());
+
     }
 }

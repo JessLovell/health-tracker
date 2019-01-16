@@ -23,4 +23,8 @@ public class Exercise {
         this.description = description;
         this.timestamp = timestamp;
     }
+
+    public String toString(){
+        return this.title + ", " + this.quantity + ": " + this.description;
+    }
 }
