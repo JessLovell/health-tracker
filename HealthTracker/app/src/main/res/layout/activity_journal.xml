@@ -56,12 +56,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="addJournalEntry"
-            android:text="Add Journal Entry" />
+            android:text="Add Journal Entry"
+            android:layout_marginBottom="16dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/journalRecycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
