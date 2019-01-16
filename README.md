@@ -10,11 +10,12 @@
 - **Displaying the Exercise Diary:** Add a new Activity to hold the Exercise Diary. In that view, display all entries from the Exercise database in a ListView. (At this point, that should show a single row.) Make sure that Exercise looks reasonable.
 - **Adding to the Exercise Diary:** At the top of the Exercise Diary activity, add a form that allows a user to enter data about an exercise. When they hit submit, the information about that exercise should be stored in the database and displayed in the ListView. You can choose how the timestamp works: either let the user enter when they completed the exercise, or use the time when they hit submit on the form.
 
-![Home Page of HealthTracker](/resources/home.png)
-![Finger Exerciser Page](/resources/fingers.png)
-![StopWatch Page](/resources/stopwatch.png)
+![Home Page of HealthTracker](/resources/home_page.png)
+![Finger Exerciser Page](/resources/finger_ex.png)
+![StopWatch Page](/resources/stopwatcher.png)
+![Exercise Journal](/resources/journal.png)
 ![Notifications](/resources/notification.png)
-![Exercise Journal](/resources/journal_db.png)
+![Notifications](/resources/set_notification.png)
 
 ## Resources
 - [Android Buttons](https://developer.android.com/guide/topics/ui/controls/button)
@@ -60,5 +61,11 @@
     - Add to Database works!
 - Day 4:
     - Create Testing for Main Activity (discovered that :phone: screen must be unlocked to run tests :laughing:)
+- Day 5:
+    - Testing for Journal and Database
+    - Styling & Layout
+    - Computer crashed
+
+
 
 
