@@ -18,6 +18,8 @@ public class FingerExercises extends AppCompatActivity {
     public void fingerExercise(View v){
 
         TextView message = findViewById(R.id.textView2);
+        TextView reps = findViewById(R.id.textView5);
+
         this.click++;
         String text = "Get those fingers clicking! ";
 
@@ -26,6 +28,8 @@ public class FingerExercises extends AppCompatActivity {
         } else if (click % 10 == 0){
             text = "The fat is melting away! ";
         }
-        message.setText(text + click);
+
+        message.setText(text);
+        reps.setText(click + "");
     }
 }
