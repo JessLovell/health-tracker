@@ -35,11 +35,4 @@ public class StopWatchTest {
         onView(allOf(withId(R.id.tvTimer), withText("00:00:00.000")))
                 .check(matches(isDisplayed()));
     }
-
-
-    @Test
-    public void testOnStartClick(){
-
-        //https://developer.android.com/studio/test/espresso-test-recorder
-    }
 }
