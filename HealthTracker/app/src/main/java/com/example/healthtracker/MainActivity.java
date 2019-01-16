@@ -34,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
 
         TextView text = findViewById(R.id.textView);
         text.setText(imageText[imageIndex % sampleImages.length]);
+
+        TextView counter = findViewById(R.id.textView7);
+        counter.setText(imageIndex % sampleImages.length + " of " + sampleImages.length);
     }
 
     public void imageBackClicked(View v){
@@ -43,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
 
         TextView text = findViewById(R.id.textView);
         text.setText(imageText[imageIndex % sampleImages.length]);
+
+        TextView counter = findViewById(R.id.textView7);
+        counter.setText(imageIndex % sampleImages.length + " of " + sampleImages.length);
     }
 
     public void stopWatchClicked(View v) {
