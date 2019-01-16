@@ -59,24 +59,25 @@ public class JournalTest {
     }
 
     @Test
-    public void addToDatabase() {
+    public void testAddToDatabase() {
 
         ExerciseDatabase testDb =  Room.databaseBuilder(getApplicationContext(),
                 ExerciseDatabase.class, "exercise_journal").allowMainThreadQueries().build();
 
-        for (int i = 1; i < 4; i++){
-            onView(withId(R.id.editText4)).perform(clearText(),
-                    typeText("Test Title " + i));
-            onView(withId(R.id.editText5)).perform(clearText(),
-                    typeText(i + ""));
-            onView(withId(R.id.editText6)).perform(clearText(),
-                    typeText("Test Description " + i));
+        String[] titles = {"Jumping Jacks", "Blurpees", "Push ups"};
+        String[] qty = {"15", "1", "180"};
+        String[] desc = {"Jump in Star shape", "The worst ever", "Arms are jello"};
+
+        for (int i = 0; i < titles.length; i++){
+            onView(withId(R.id.editText4)).perform(clearText(), typeText(titles[i]));
+            onView(withId(R.id.editText5)).perform(clearText(), typeText(qty[i]));
+            onView(withId(R.id.editText6)).perform(clearText(), typeText(desc[i]));
             onView(withId(R.id.button7)).perform(click());
 
             Exercise testAdd = testDb.exerciseDao().getLast();
-            assertEquals( "Test Title " + i, testAdd.title);
-            assertEquals( "Test Description " + i, testAdd.description);
-            assertEquals( i + "", testAdd.quantity);
+            assertEquals( titles[i], testAdd.title);
+            assertEquals( desc[i], testAdd.description);
+            assertEquals( qty[i], testAdd.quantity);
         }
     }
 
@@ -90,6 +91,28 @@ public class JournalTest {
         assertEquals("Jumping Jacks, 15: Jump in Star shape", one.toString());
         assertEquals("Blurpees, 1: The worst ever", two.toString());
         assertEquals("Push ups, 180: Arms are jello", three.toString());
+    }
 
+    @Test
+    public void testDatabaseRetrieval(){
+
+        ExerciseDatabase testDb =  Room.databaseBuilder(getApplicationContext(),
+                ExerciseDatabase.class, "exercise_journal").allowMainThreadQueries().build();
+
+        String[] titles = {"Jumping Jacks", "Blurpees", "Push ups"};
+        String[] qty = {"15", "1", "180"};
+        String[] desc = {"Jump in Star shape", "The worst ever", "Arms are jello"};
+
+        for (int i = 0; i < titles.length; i++){
+            onView(withId(R.id.editText4)).perform(clearText(), typeText(titles[i]));
+            onView(withId(R.id.editText5)).perform(clearText(), typeText(qty[i]));
+            onView(withId(R.id.editText6)).perform(clearText(), typeText(desc[i]));
+            onView(withId(R.id.button7)).perform(click());
+
+            Exercise testAdd = testDb.exerciseDao().getLast();
+            assertEquals( titles[i], testAdd.title);
+            assertEquals( desc[i], testAdd.description);
+            assertEquals( qty[i], testAdd.quantity);
+        }
     }
 }
