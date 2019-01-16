@@ -22,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        TextView counter = findViewById(R.id.textView7);
+        counter.setText(imageIndex % sampleImages.length + " of " + sampleImages.length);
     }
 
     public void imageNextClicked(View v){
@@ -30,10 +33,7 @@ public class MainActivity extends AppCompatActivity {
         image.setImageResource(sampleImages[imageIndex++ % sampleImages.length]);
 
         TextView text = findViewById(R.id.textView);
-        text.setText(imageText[imageIndex++ % sampleImages.length]);
-
-        TextView counter = findViewById(R.id.textView7);
-        counter.setText(imageIndex++ % sampleImages.length + " of " + sampleImages.length);
+        text.setText(imageText[imageIndex % sampleImages.length]);
     }
 
     public void imageBackClicked(View v){
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         image.setImageResource(sampleImages[imageIndex-- % sampleImages.length]);
 
         TextView text = findViewById(R.id.textView);
-        text.setText(imageText[imageIndex-- % sampleImages.length]);
+        text.setText(imageText[imageIndex % sampleImages.length]);
     }
 
     public void stopWatchClicked(View v) {
