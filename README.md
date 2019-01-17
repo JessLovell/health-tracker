@@ -59,12 +59,16 @@
     - Setup the database for Exercise Journal
     - Recycler view added
     - Add to Database works!
+
 - Day 4:
     - Create Testing for Main Activity (discovered that :phone: screen must be unlocked to run tests :laughing:)
 - Day 5:
     - Testing for Journal and Database
     - Styling & Layout
     - Computer crashed :sob:
+- Day 6:
+    - [Create Server](https://github.com/JessLovell/health-tracker-backend) with routes `/exercise`
+
 
 
 
