@@ -21,7 +21,9 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Journal extends AppCompatActivity {
 
@@ -50,7 +52,9 @@ public class Journal extends AppCompatActivity {
 
         Exercise exercise = new Exercise(title.getText().toString(), quantity.getText().toString(), description.getText().toString(), timestamp);
         exerciseDatabase.exerciseDao().add(exercise);
-        
+
+        saveToServerDatabase(title.getText().toString(), quantity.getText().toString(), description.getText().toString());
+
         //got this from: https://stackoverflow.com/questions/3053761/reload-activity-in-android
         finish();
         startActivity(getIntent());
@@ -104,5 +108,38 @@ public class Journal extends AppCompatActivity {
         // define an adapter
         mAdapter = new MyAdapter(serverDatabase);
         recyclerView.setAdapter(mAdapter);
+    }
+
+
+    public void saveToServerDatabase(final String title, final String quantity, final String description){
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="https://stormy-bayou-86086.herokuapp.com/exercises";
+
+// Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.i("Journal.getServer", "added to server db");
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Journal.getServer", error.toString());
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("title", title);
+                params.put("quantity", quantity);
+                params.put("description", description);
+
+                return params;
+            }
+        };
+
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
     }
 }
