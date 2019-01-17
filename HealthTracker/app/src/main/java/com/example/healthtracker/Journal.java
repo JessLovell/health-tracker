@@ -26,6 +26,7 @@ import java.util.List;
 public class Journal extends AppCompatActivity {
 
     private ExerciseDatabase exerciseDatabase;
+    private List<Exercise> serverDatabase;
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -36,20 +37,8 @@ public class Journal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journal);
 
-        exerciseDatabase = Room.databaseBuilder(getApplicationContext(),
-                ExerciseDatabase.class, "exercise_journal").allowMainThreadQueries().build();
-
-        recyclerView = (RecyclerView) findViewById(R.id.journalRecycler);
-        recyclerView.setHasFixedSize(true);
-
-        // use a linear layout manager
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-
-        // define an adapter
-        mAdapter = new MyAdapter(exerciseDatabase.exerciseDao().getAll());
-        recyclerView.setAdapter(mAdapter);
-
+        //call to server database
+        getServerDb();
     }
 
     public void addJournalEntry(View v){
@@ -80,6 +69,8 @@ public class Journal extends AppCompatActivity {
                         Gson gson = new Gson();
                         Type listType = new TypeToken<List<Exercise>>(){}.getType();
                         List<Exercise> serverResponse = gson.fromJson(response, listType);
+                        serverDatabase = serverResponse;
+                        renderRecyclerView();
                         Log.i("Journal.getServer", "got response");
                     }
                 }, new Response.ErrorListener() {
@@ -91,5 +82,25 @@ public class Journal extends AppCompatActivity {
 
 // Add the request to the RequestQueue.
         queue.add(stringRequest);
+    }
+
+    public void renderRecyclerView(){
+
+        exerciseDatabase = Room.databaseBuilder(getApplicationContext(),
+                ExerciseDatabase.class, "exercise_journal").allowMainThreadQueries().build();
+
+        //Add the external database to the local database
+        serverDatabase.addAll(exerciseDatabase.exerciseDao().getAll());
+
+        recyclerView = (RecyclerView) findViewById(R.id.journalRecycler);
+        recyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        // define an adapter
+        mAdapter = new MyAdapter(serverDatabase);
+        recyclerView.setAdapter(mAdapter);
     }
 }

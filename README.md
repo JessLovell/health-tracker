@@ -28,7 +28,9 @@
 - [Recycler Views](http://www.vogella.com/tutorials/AndroidRecyclerView/article.html)
 - [Espresso Testing Tutorial](https://medium.com/mindorks/android-testing-part-1-espresso-basics-7219b86c862b)
 - [Android Espresso Docs](https://developer.android.com/training/testing/espresso/)
-- [Unlock Screen During Testing](https://stackoverflow.com/questions/30596446/espresso-test-fails-with-noactivityresumedexception-often) 
+- [Unlock Screen During Testing](https://stackoverflow.com/questions/30596446/espresso-test-fails-with-noactivityresumedexception-often)
+- [Volley Requests](https://developer.android.com/training/volley/simple)
+- [Gson to List](https://stackoverflow.com/questions/8371274/how-to-parse-json-array-with-gson/8371455)
 
 
 ### Images
