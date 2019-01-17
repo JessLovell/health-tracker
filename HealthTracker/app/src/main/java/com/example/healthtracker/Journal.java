@@ -70,6 +70,8 @@ public class Journal extends AppCompatActivity {
                         Type listType = new TypeToken<List<Exercise>>(){}.getType();
                         List<Exercise> serverResponse = gson.fromJson(response, listType);
                         serverDatabase = serverResponse;
+
+                        //combine the two databases -- local and server
                         renderRecyclerView();
                         Log.i("Journal.getServer", "got response");
                     }
