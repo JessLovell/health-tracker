@@ -5,14 +5,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Journal extends AppCompatActivity {
 
     private ExerciseDatabase exerciseDatabase;
+    private List<Exercise> serverDatabase;
 
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -23,20 +39,8 @@ public class Journal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journal);
 
-        exerciseDatabase = Room.databaseBuilder(getApplicationContext(),
-                ExerciseDatabase.class, "exercise_journal").allowMainThreadQueries().build();
-
-        recyclerView = (RecyclerView) findViewById(R.id.journalRecycler);
-        recyclerView.setHasFixedSize(true);
-
-        // use a linear layout manager
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-
-        // define an adapter
-        mAdapter = new MyAdapter(exerciseDatabase.exerciseDao().getAll());
-        recyclerView.setAdapter(mAdapter);
-
+        //call to server database
+        getServerDb();
     }
 
     public void addJournalEntry(View v){
@@ -49,8 +53,93 @@ public class Journal extends AppCompatActivity {
         Exercise exercise = new Exercise(title.getText().toString(), quantity.getText().toString(), description.getText().toString(), timestamp);
         exerciseDatabase.exerciseDao().add(exercise);
 
+        saveToServerDatabase(title.getText().toString(), quantity.getText().toString(), description.getText().toString());
+
         //got this from: https://stackoverflow.com/questions/3053761/reload-activity-in-android
         finish();
         startActivity(getIntent());
+    }
+
+    public void getServerDb(){
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="https://stormy-bayou-86086.herokuapp.com/exercises";
+
+// Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        Gson gson = new Gson();
+                        Type listType = new TypeToken<List<Exercise>>(){}.getType();
+                        List<Exercise> serverResponse = gson.fromJson(response, listType);
+                        serverDatabase = serverResponse;
+
+                        //combine the two databases -- local and server
+                        renderRecyclerView();
+                        Log.i("Journal.getServer", "got response");
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Journal.getServer", error.toString());
+            }
+        });
+
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
+    }
+
+    public void renderRecyclerView(){
+
+        exerciseDatabase = Room.databaseBuilder(getApplicationContext(),
+                ExerciseDatabase.class, "exercise_journal").allowMainThreadQueries().build();
+
+        //Add the external database to the local database
+        serverDatabase.addAll(exerciseDatabase.exerciseDao().getAll());
+
+        recyclerView = (RecyclerView) findViewById(R.id.journalRecycler);
+        recyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        // define an adapter
+        mAdapter = new MyAdapter(serverDatabase);
+        recyclerView.setAdapter(mAdapter);
+    }
+
+
+    public void saveToServerDatabase(final String title, final String quantity, final String description){
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="https://stormy-bayou-86086.herokuapp.com/exercises";
+
+// Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.i("Journal.getServer", "added to server db");
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Journal.getServer", error.toString());
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("title", title);
+                params.put("quantity", quantity);
+                params.put("description", description);
+
+                return params;
+            }
+        };
+
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
     }
 }

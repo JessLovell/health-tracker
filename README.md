@@ -9,6 +9,9 @@
 - **Database Setup:** Set up a database to contain Exercise data. Each Exercise should have a title, quantity, and description, as well as a timestamp. For testing, add a single Exercise to the database.
 - **Displaying the Exercise Diary:** Add a new Activity to hold the Exercise Diary. In that view, display all entries from the Exercise database in a ListView. (At this point, that should show a single row.) Make sure that Exercise looks reasonable.
 - **Adding to the Exercise Diary:** At the top of the Exercise Diary activity, add a form that allows a user to enter data about an exercise. When they hit submit, the information about that exercise should be stored in the database and displayed in the ListView. You can choose how the timestamp works: either let the user enter when they completed the exercise, or use the time when they hit submit on the form.
+- **Backend:** Add `POST` and `GET` requests to a server to save databases.
+- **Display Exercises from the server:** When a user opens the Exercise Diary page, the app should make a request to the server to retrieve all the Exercises in the server’s database. It should display both those Exercises and the ones that are local to the device within the Diary page.
+- **Post Exercises to the server:** When a user creates a new Exercise locally on their device, in addition to saving it to the local database, the app should POST it to the server.
 
 ![Home Page of HealthTracker](/resources/home_page.png)
 ![Finger Exerciser Page](/resources/finger_ex.png)
@@ -28,7 +31,10 @@
 - [Recycler Views](http://www.vogella.com/tutorials/AndroidRecyclerView/article.html)
 - [Espresso Testing Tutorial](https://medium.com/mindorks/android-testing-part-1-espresso-basics-7219b86c862b)
 - [Android Espresso Docs](https://developer.android.com/training/testing/espresso/)
-- [Unlock Screen During Testing](https://stackoverflow.com/questions/30596446/espresso-test-fails-with-noactivityresumedexception-often) 
+- [Unlock Screen During Testing](https://stackoverflow.com/questions/30596446/espresso-test-fails-with-noactivityresumedexception-often)
+- [Volley Requests](https://developer.android.com/training/volley/simple)
+- [Gson to List](https://stackoverflow.com/questions/8371274/how-to-parse-json-array-with-gson/8371455)
+- [Volley POST Requests](https://www.itsalif.info/content/android-volley-tutorial-http-get-post-put)
 
 
 ### Images
@@ -59,12 +65,18 @@
     - Setup the database for Exercise Journal
     - Recycler view added
     - Add to Database works!
+
 - Day 4:
     - Create Testing for Main Activity (discovered that :phone: screen must be unlocked to run tests :laughing:)
 - Day 5:
     - Testing for Journal and Database
     - Styling & Layout
     - Computer crashed :sob:
+- Day 6:
+    - [Create Server](https://github.com/JessLovell/health-tracker-backend) with routes `/exercise`
+    - Render Server and Local entries on the recycle view
+    - Save to server database!!! VICTORY!!!
+
 
 
 
