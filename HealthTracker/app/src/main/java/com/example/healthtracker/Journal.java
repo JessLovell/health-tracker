@@ -185,9 +185,9 @@ public class Journal extends AppCompatActivity {
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
-                                String cityName = addresses.get(0).getLocality();
+                                exerciseLocation = addresses.get(0).getLocality();
 
-                                Log.i("Journal.Location", "Got a location " + cityName);
+                                Log.i("Journal.Location", "Got a location " + exerciseLocation);
                             }
                             else {
                                 exerciseLocation = "Unknown";
