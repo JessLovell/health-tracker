@@ -1,7 +1,13 @@
 package com.example.healthtracker;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.room.Room;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +22,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -34,10 +43,20 @@ public class Journal extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
+    private FusedLocationProviderClient mFusedLocationClient;
+    private Location exerciseLocation;
+
+    private final int MY_PERMISSIONS_REQUEST_LOCATIONS = 1896;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journal);
+
+        //getting the last location
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        getExerciseLocation();
 
         //call to server database
         getServerDb();
@@ -110,7 +129,6 @@ public class Journal extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
     }
 
-
     public void saveToServerDatabase(final String title, final String quantity, final String description){
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="https://stormy-bayou-86086.herokuapp.com/exercises";
@@ -141,5 +159,68 @@ public class Journal extends AppCompatActivity {
 
 // Add the request to the RequestQueue.
         queue.add(stringRequest);
+    }
+
+    public void getExerciseLocation(){
+
+        //Permission Granted
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            mFusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            // Got last known location. In some rare situations this can be null.
+                            if (location != null) {
+                                // Logic to handle location object
+                                exerciseLocation = location;
+                                Log.i("Journal.Location", "Got a location " + location);
+                            }
+                        }
+                    });
+        }
+        // Permission denied, request permission
+        else {
+
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.ACCESS_COARSE_LOCATION)) {
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+
+            } else {
+                // No explanation needed; request the permission
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
+                        MY_PERMISSIONS_REQUEST_LOCATIONS);
+
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_LOCATIONS: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted, yay! Do the
+                    getExerciseLocation();
+
+                } else {
+                    // permission denied, boo! Disable the
+                    exerciseLocation = new Location("Home");
+                    Log.i("Journal.Location", "Home");
+                }
+                return;
+            }
+
+            // TODO: ADD camera
+            // other 'case' lines to check for other
+            // permissions this app might request.
+        }
     }
 }

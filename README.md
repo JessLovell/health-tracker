@@ -76,6 +76,8 @@
     - [Create Server](https://github.com/JessLovell/health-tracker-backend) with routes `/exercise`
     - Render Server and Local entries on the recycle view
     - Save to server database!!! VICTORY!!!
+-Day 7:
+    - Add hard coded text to the Strings.xml file.
 
 
 
