@@ -23,32 +23,40 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ImageView image = findViewById(R.id.imageView);
+        image.setImageResource(sampleImages[imageIndex % sampleImages.length]);
+
+        TextView text = findViewById(R.id.textView);
+        text.setText(imageText[imageIndex % sampleImages.length]);
+
         TextView counter = findViewById(R.id.textView7);
-        counter.setText(imageIndex % sampleImages.length + " of " + sampleImages.length);
+        counter.setText(((imageIndex % sampleImages.length) + 1) + " of " + sampleImages.length);
     }
 
     public void imageNextClicked(View v){
 
+        imageIndex++;
         ImageView image = findViewById(R.id.imageView);
-        image.setImageResource(sampleImages[imageIndex++ % sampleImages.length]);
+        image.setImageResource(sampleImages[imageIndex % sampleImages.length]);
 
         TextView text = findViewById(R.id.textView);
         text.setText(imageText[imageIndex % sampleImages.length]);
 
         TextView counter = findViewById(R.id.textView7);
-        counter.setText(imageIndex % sampleImages.length + " of " + sampleImages.length);
+        counter.setText(((imageIndex % sampleImages.length) + 1) + " of " + sampleImages.length);
     }
 
     public void imageBackClicked(View v){
 
+        imageIndex--;
         ImageView image = findViewById(R.id.imageView);
-        image.setImageResource(sampleImages[imageIndex-- % sampleImages.length]);
+        image.setImageResource(sampleImages[imageIndex % sampleImages.length]);
 
         TextView text = findViewById(R.id.textView);
         text.setText(imageText[imageIndex % sampleImages.length]);
 
         TextView counter = findViewById(R.id.textView7);
-        counter.setText(imageIndex % sampleImages.length + " of " + sampleImages.length);
+        counter.setText(((imageIndex % sampleImages.length) + 1) + " of " + sampleImages.length);
     }
 
     public void stopWatchClicked(View v) {
