@@ -23,7 +23,7 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="229dp"
-            android:text="Drinking water is vital to your health. Studies have shown that it can reduce hunger and increase hydration. "
+            android:text="@string/drinking_water_is_vital_to_your_health_studies_have_shown_that_it_can_reduce_hunger_and_increase_hydration"
             android:textAlignment="center"
             android:textSize="24sp" />
 
@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:lineSpacingExtra="8sp"
-            android:text="Set a reminder to drink water every 2 hours: "
+            android:text="@string/set_a_reminder_to_drink_water_every_2_hours"
             android:textAlignment="center"
             android:textSize="18sp" />
 
@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="sendNotification"
-            android:text="Enable Notifications" />
+            android:text="@string/enable_notifications" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
