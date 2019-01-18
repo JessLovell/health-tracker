@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -30,10 +32,12 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class Journal extends AppCompatActivity {
@@ -46,7 +50,7 @@ public class Journal extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
 
     private FusedLocationProviderClient mFusedLocationClient;
-    private Location exerciseLocation;
+    private String exerciseLocation;
 
     private final int MY_PERMISSIONS_REQUEST_LOCATIONS = 1896;
 
@@ -173,9 +177,18 @@ public class Journal extends AppCompatActivity {
                         public void onSuccess(Location location) {
                             // Got last known location. In some rare situations this can be null.
                             if (location != null) {
-                                // Logic to handle location object
-                                exerciseLocation = location;
-                                Log.i("Journal.Location", "Got a location " + location);
+
+                                //Turn the location to a String object
+                                Geocoder geocoder = new Geocoder(Journal.this, Locale.getDefault());
+                                List<Address> addresses = null;
+                                try {
+                                    addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                                String cityName = addresses.get(0).getLocality();
+
+                                Log.i("Journal.Location", "Got a location " + cityName);
                             }
                         }
                     });
@@ -212,7 +225,7 @@ public class Journal extends AppCompatActivity {
 
                 } else {
                     // permission denied, boo! Disable the
-                    exerciseLocation = new Location("Home");
+                    exerciseLocation = "Unknown";
                     Log.i("Journal.Location", "Home");
                 }
                 return;
