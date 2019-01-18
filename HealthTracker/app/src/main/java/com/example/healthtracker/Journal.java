@@ -75,10 +75,10 @@ public class Journal extends AppCompatActivity {
         EditText quantity = findViewById(R.id.editText5);
         String timestamp = new Date().toString();
 
-        Exercise exercise = new Exercise(title.getText().toString(), quantity.getText().toString(), description.getText().toString(), timestamp);
+        Exercise exercise = new Exercise(title.getText().toString(), quantity.getText().toString(), description.getText().toString(), timestamp, exerciseLocation);
         exerciseDatabase.exerciseDao().add(exercise);
 
-        saveToServerDatabase(title.getText().toString(), quantity.getText().toString(), description.getText().toString());
+        saveToServerDatabase(title.getText().toString(), quantity.getText().toString(), description.getText().toString(), exerciseLocation);
 
         //got this from: https://stackoverflow.com/questions/3053761/reload-activity-in-android
         finish();
@@ -135,7 +135,7 @@ public class Journal extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
     }
 
-    public void saveToServerDatabase(final String title, final String quantity, final String description){
+    public void saveToServerDatabase(final String title, final String quantity, final String description, final String exerciseLocation){
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="https://stormy-bayou-86086.herokuapp.com/exercises";
 
@@ -158,6 +158,7 @@ public class Journal extends AppCompatActivity {
                 params.put("title", title);
                 params.put("quantity", quantity);
                 params.put("description", description);
+                params.put("location", exerciseLocation);
 
                 return params;
             }
@@ -189,6 +190,9 @@ public class Journal extends AppCompatActivity {
                                 String cityName = addresses.get(0).getLocality();
 
                                 Log.i("Journal.Location", "Got a location " + cityName);
+                            }
+                            else {
+                                exerciseLocation = "Unknown";
                             }
                         }
                     });

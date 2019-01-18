@@ -15,15 +15,17 @@ public class Exercise {
     public String quantity;
     public String description;
     public String timestamp;
+    public String location;
 
     public Exercise(){
     }
 
-    public Exercise(String title, String quantity, String description, String timestamp){
+    public Exercise(String title, String quantity, String description, String timestamp, String location){
         this.title = title;
         this.quantity = quantity;
         this.description = description;
         this.timestamp = timestamp;
+        this.location = location;
     }
 
     public String toString(){
