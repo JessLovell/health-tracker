@@ -80,6 +80,9 @@
     - Save to server database!!! VICTORY!!!
 -Day 7:
     - Add hard coded text to the Strings.xml file.
+    - Get the user location :v
+    - Updated databases local and server
+    - Cannot render the location to add on server and recycler :sob: :woman_shrugging:
 
 
 
