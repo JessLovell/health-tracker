@@ -1,7 +1,15 @@
 package com.example.healthtracker;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.room.Room;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,13 +24,18 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class Journal extends AppCompatActivity {
@@ -34,10 +47,20 @@ public class Journal extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
+    private FusedLocationProviderClient mFusedLocationClient;
+    private String exerciseLocation;
+
+    private final int MY_PERMISSIONS_REQUEST_LOCATIONS = 1896;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journal);
+
+        //getting the last location
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        getExerciseLocation();
 
         //call to server database
         getServerDb();
@@ -50,7 +73,7 @@ public class Journal extends AppCompatActivity {
         EditText quantity = findViewById(R.id.editText5);
         String timestamp = new Date().toString();
 
-        Exercise exercise = new Exercise(title.getText().toString(), quantity.getText().toString(), description.getText().toString(), timestamp);
+        Exercise exercise = new Exercise(title.getText().toString(), quantity.getText().toString(), description.getText().toString(), timestamp, exerciseLocation);
         exerciseDatabase.exerciseDao().add(exercise);
 
         saveToServerDatabase(title.getText().toString(), quantity.getText().toString(), description.getText().toString());
@@ -110,7 +133,6 @@ public class Journal extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
     }
 
-
     public void saveToServerDatabase(final String title, final String quantity, final String description){
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="https://stormy-bayou-86086.herokuapp.com/exercises";
@@ -134,6 +156,7 @@ public class Journal extends AppCompatActivity {
                 params.put("title", title);
                 params.put("quantity", quantity);
                 params.put("description", description);
+                params.put("location", exerciseLocation);
 
                 return params;
             }
@@ -141,5 +164,78 @@ public class Journal extends AppCompatActivity {
 
 // Add the request to the RequestQueue.
         queue.add(stringRequest);
+    }
+
+    public void getExerciseLocation(){
+
+        //Permission Granted
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            mFusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            // Got last known location. In some rare situations this can be null.
+                            if (location != null) {
+
+                                //Turn the location to a String object
+                                Geocoder geocoder = new Geocoder(Journal.this, Locale.getDefault());
+                                List<Address> addresses = null;
+                                try {
+                                    addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                                exerciseLocation = addresses.get(0).getLocality();
+
+                                Log.i("Journal.Location", "Got a location " + exerciseLocation);
+                            }
+                            else {
+                                exerciseLocation = "Unknown";
+                            }
+                        }
+                    });
+        }
+        // Permission denied, request permission
+        else {
+
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.ACCESS_COARSE_LOCATION)) {
+                //TODO: Customize the alert message
+
+            } else {
+                // No explanation needed; request the permission
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
+                        MY_PERMISSIONS_REQUEST_LOCATIONS);
+
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_LOCATIONS: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted, yay! Do the
+                    getExerciseLocation();
+
+                } else {
+                    // permission denied, boo! Disable the
+                    exerciseLocation = "Unknown";
+                    Log.i("Journal.Location", "Home");
+                }
+                return;
+            }
+
+            // TODO: ADD camera?
+            // other 'case' lines to check for other
+            // permissions this app might request.
+        }
     }
 }

@@ -35,6 +35,8 @@
 - [Volley Requests](https://developer.android.com/training/volley/simple)
 - [Gson to List](https://stackoverflow.com/questions/8371274/how-to-parse-json-array-with-gson/8371455)
 - [Volley POST Requests](https://www.itsalif.info/content/android-volley-tutorial-http-get-post-put)
+- [Requesting Permissions](https://developer.android.com/training/permissions/requesting)
+- [Location Pretty Print](https://stackoverflow.com/questions/22323974/how-to-get-city-name-by-latitude-longitude-in-android) Second Comment
 
 
 ### Images
@@ -76,6 +78,12 @@
     - [Create Server](https://github.com/JessLovell/health-tracker-backend) with routes `/exercise`
     - Render Server and Local entries on the recycle view
     - Save to server database!!! VICTORY!!!
+- Day 7:
+    - Add hard coded text to the Strings.xml file.
+    - Get the user location
+    - Cannot render the location to add on server and recycler :sob: :woman_shrugging:
+    - Updated databases local and server :woman_cartwheeling:
+
 
 
 
