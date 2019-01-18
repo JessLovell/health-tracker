@@ -1,13 +1,11 @@
 package com.example.healthtracker;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.room.Room;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
-import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -78,7 +76,7 @@ public class Journal extends AppCompatActivity {
         Exercise exercise = new Exercise(title.getText().toString(), quantity.getText().toString(), description.getText().toString(), timestamp, exerciseLocation);
         exerciseDatabase.exerciseDao().add(exercise);
 
-        saveToServerDatabase(title.getText().toString(), quantity.getText().toString(), description.getText().toString(), exerciseLocation);
+        saveToServerDatabase(title.getText().toString(), quantity.getText().toString(), description.getText().toString());
 
         //got this from: https://stackoverflow.com/questions/3053761/reload-activity-in-android
         finish();
@@ -135,7 +133,7 @@ public class Journal extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
     }
 
-    public void saveToServerDatabase(final String title, final String quantity, final String description, final String exerciseLocation){
+    public void saveToServerDatabase(final String title, final String quantity, final String description){
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="https://stormy-bayou-86086.herokuapp.com/exercises";
 
@@ -235,7 +233,7 @@ public class Journal extends AppCompatActivity {
                 return;
             }
 
-            // TODO: ADD camera
+            // TODO: ADD camera?
             // other 'case' lines to check for other
             // permissions this app might request.
         }

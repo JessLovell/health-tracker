@@ -36,7 +36,7 @@
 - [Gson to List](https://stackoverflow.com/questions/8371274/how-to-parse-json-array-with-gson/8371455)
 - [Volley POST Requests](https://www.itsalif.info/content/android-volley-tutorial-http-get-post-put)
 - [Requesting Permissions](https://developer.android.com/training/permissions/requesting)
-- [Location Pretty Print](https://stackoverflow.com/questions/22323974/how-to-get-city-name-by-latitude-longitude-in-android)
+- [Location Pretty Print](https://stackoverflow.com/questions/22323974/how-to-get-city-name-by-latitude-longitude-in-android) Second Comment
 
 
 ### Images
