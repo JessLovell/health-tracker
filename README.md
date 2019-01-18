@@ -78,11 +78,12 @@
     - [Create Server](https://github.com/JessLovell/health-tracker-backend) with routes `/exercise`
     - Render Server and Local entries on the recycle view
     - Save to server database!!! VICTORY!!!
--Day 7:
+- Day 7:
     - Add hard coded text to the Strings.xml file.
-    - Get the user location :v
-    - Updated databases local and server :woman_cartwheeling:
+    - Get the user location
     - Cannot render the location to add on server and recycler :sob: :woman_shrugging:
+    - Updated databases local and server :woman_cartwheeling:
+
 
 
 
