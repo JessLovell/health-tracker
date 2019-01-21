@@ -17,6 +17,7 @@ public class FingerExercises extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finger_exercises);
 
+        //get username
         SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.logged_in_user), Context.MODE_PRIVATE);
         String user = sharedPref.getString(getString(R.string.logged_in_user), "Welcome");
         TextView loggedInUser = findViewById(R.id.textView8);

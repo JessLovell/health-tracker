@@ -25,7 +25,7 @@ public class Notifications extends AppCompatActivity {
         setContentView(R.layout.activity_notifications);
 
         //display user at top
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.logged_in_user), Context.MODE_PRIVATE);
         String user = sharedPref.getString(getString(R.string.logged_in_user), "Welcome");
         TextView loggedInUser = findViewById(R.id.textView10);
         loggedInUser.setText("Welcome " + user);
