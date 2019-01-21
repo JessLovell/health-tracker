@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //display user at top
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.logged_in_user), Context.MODE_PRIVATE);
         String user = sharedPref.getString(getString(R.string.logged_in_user), "Welcome");
         TextView loggedInUser = findViewById(R.id.textView11);
         loggedInUser.setText("Welcome " + user);
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         EditText loggedInUser = findViewById(R.id.editText3);
 
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.logged_in_user),Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(getString(R.string.logged_in_user), loggedInUser.getText().toString());
         editor.commit();

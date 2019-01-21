@@ -62,8 +62,9 @@ public class Journal extends AppCompatActivity {
         setContentView(R.layout.activity_journal);
 
         //display user at top
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        String user = sharedPref.getString(getString(R.string.logged_in_user), "Welcome");
+        SharedPreferences sharedPref = this.getSharedPreferences(
+                getString(R.string.logged_in_user), Context.MODE_PRIVATE);
+        String user = sharedPref.getString("logged_in_user", "Welcome");
         TextView loggedInUser = findViewById(R.id.textView6);
         loggedInUser.setText(user + "'s Journal");
 
