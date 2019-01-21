@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,19 +31,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (getString(R.string.logged_in_user) != "logged_in_user"){
-            EditText loggedInUser = findViewById(R.id.editText3);
-            Button add = findViewById(R.id.button11);
-            loggedInUser.setVisibility(View.INVISIBLE);
-            add.setVisibility(View.INVISIBLE);
-        } else {
-            SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-            String user = sharedPref.getString(getString(R.string.logged_in_user), "Welcome");
-
-            TextView loggedInUser = findViewById(R.id.textView11);
-            loggedInUser.setText("Welcome " + user);
-
-        }
+        //display user at top
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        String user = sharedPref.getString(getString(R.string.logged_in_user), "Welcome");
+        TextView loggedInUser = findViewById(R.id.textView11);
+        loggedInUser.setText("Welcome " + user);
 
         ImageView image = findViewById(R.id.imageView);
         image.setImageResource(sampleImages[imageIndex % sampleImages.length]);
@@ -62,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(getString(R.string.logged_in_user), loggedInUser.getText().toString());
         editor.commit();
+
+        finish();
+        startActivity(getIntent());
     }
 
     public void imageNextClicked(View v){
