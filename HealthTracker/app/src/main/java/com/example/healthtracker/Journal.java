@@ -6,6 +6,8 @@ import androidx.room.Room;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -17,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -57,6 +60,12 @@ public class Journal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journal);
+
+        //display user at top
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        String user = sharedPref.getString(getString(R.string.logged_in_user), "Welcome");
+        TextView loggedInUser = findViewById(R.id.textView6);
+        loggedInUser.setText(user + "'s Journal");
 
         //getting the last location
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
