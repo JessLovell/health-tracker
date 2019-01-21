@@ -1,6 +1,9 @@
 package com.example.healthtracker;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -13,6 +16,12 @@ public class FingerExercises extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finger_exercises);
+
+        //display user at top
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        String user = sharedPref.getString(getString(R.string.logged_in_user), "Welcome");
+        TextView loggedInUser = findViewById(R.id.textView8);
+        loggedInUser.setText("Welcome " + user);
     }
 
     public void fingerExercise(View v){
