@@ -26,4 +26,5 @@
     <string name="date">Date</string>
     <string name="image">Image</string>
     <string name="image_carousel">image carousel</string>
+    <string name="logged_in_user">logged_in_user</string>
 </resources>

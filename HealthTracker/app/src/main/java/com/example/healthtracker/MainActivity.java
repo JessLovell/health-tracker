@@ -1,11 +1,18 @@
 package com.example.healthtracker;
 
+import android.content.Context;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import static android.app.PendingIntent.getActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -23,6 +30,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (getString(R.string.logged_in_user) != "logged_in_user"){
+            EditText loggedInUser = findViewById(R.id.editText3);
+            Button add = findViewById(R.id.button11);
+            loggedInUser.setVisibility(View.INVISIBLE);
+            add.setVisibility(View.INVISIBLE);
+        } else {
+            SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+            String user = sharedPref.getString(getString(R.string.logged_in_user), "Welcome");
+
+            TextView loggedInUser = findViewById(R.id.textView11);
+            loggedInUser.setText("Welcome " + user);
+
+        }
+
         ImageView image = findViewById(R.id.imageView);
         image.setImageResource(sampleImages[imageIndex % sampleImages.length]);
 
@@ -31,6 +52,16 @@ public class MainActivity extends AppCompatActivity {
 
         TextView counter = findViewById(R.id.textView7);
         counter.setText(((imageIndex % sampleImages.length) + 1) + " of " + sampleImages.length);
+    }
+
+    public void addLoggedInUser(View v){
+
+        EditText loggedInUser = findViewById(R.id.editText3);
+
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(getString(R.string.logged_in_user), loggedInUser.getText().toString());
+        editor.commit();
     }
 
     public void imageNextClicked(View v){
