@@ -1,5 +1,7 @@
 package com.example.healthtracker;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.SystemClock;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +23,12 @@ public class StopWatch extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stop_watch);
+
+        //display user at top
+        SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.logged_in_user), Context.MODE_PRIVATE);
+        String user = sharedPref.getString(getString(R.string.logged_in_user), "Welcome");
+        TextView loggedInUser = findViewById(R.id.textView12);
+        loggedInUser.setText("Welcome " + user);
 
         timer = (TextView)findViewById(R.id.tvTimer);
         start = (Button)findViewById(R.id.btStart);
