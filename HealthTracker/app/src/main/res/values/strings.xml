@@ -26,8 +26,8 @@
     <string name="date">Date</string>
     <string name="image">Image</string>
     <string name="image_carousel">image carousel</string>
-    <string name="logged_in_user">USER NAME</string>
-    <string name="finger_exercise_stat">0</string>
+    <string name="logged_in_user">username</string>
+    <string name="finger_exercise_stat">finger-exercise-stat</string>
     <string name="welcome">Welcome</string>
 
 </resources>

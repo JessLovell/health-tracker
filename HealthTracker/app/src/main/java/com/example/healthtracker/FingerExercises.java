@@ -20,17 +20,18 @@ public class FingerExercises extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finger_exercises);
 
-        // Intitalize clicks counter
-        clicks = this.getSharedPreferences(getString(R.string.logged_in_user), Context.MODE_PRIVATE);
-        totalClicks = clicks.getInt(getString(R.string.finger_exercise_stat), 0);
-        reps = findViewById(R.id.textView5);
-        reps.setText(totalClicks + "");
-
         // Get username
         SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.logged_in_user), Context.MODE_PRIVATE);
         String user = sharedPref.getString(getString(R.string.logged_in_user), "Welcome");
         TextView loggedInUser = findViewById(R.id.textView8);
         loggedInUser.setText("Welcome " + user);
+
+        clicks = sharedPref;
+
+        // Intitalize clicks counter
+        totalClicks = sharedPref.getInt(getString(R.string.finger_exercise_stat),0);
+        reps = findViewById(R.id.textView5);
+        reps.setText(totalClicks + "");
     }
 
     public void fingerExercise(View v){

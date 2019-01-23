@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
             "Eat fruits and veggies to get more energy.", "Stay hydrated!" };
 
     public int totalClicks;
+    SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +34,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Get Stats
-        SharedPreferences clicks = this.getSharedPreferences(getString(R.string.finger_exercise_stat),Context.MODE_PRIVATE);
-        totalClicks = clicks.getInt(getString(R.string.finger_exercise_stat), 3);
-
-        //display user at top
         SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.logged_in_user), Context.MODE_PRIVATE);
+        totalClicks = sharedPref.getInt(getString(R.string.finger_exercise_stat),0);
+        
+        //display user at top
         String user = sharedPref.getString(getString(R.string.logged_in_user), "Welcome");
         TextView loggedInUser = findViewById(R.id.textView11);
-        loggedInUser.setText(", Finger Strength: " + totalClicks);
+        loggedInUser.setText("Welcome " + user + ", Finger Strength: " + totalClicks);
 
         // Image carousel
         ImageView image = findViewById(R.id.imageView);
