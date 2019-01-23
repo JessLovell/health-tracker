@@ -28,6 +28,7 @@
             android:layout_marginTop="120dp"
             android:paddingBottom="50dp"
             android:text="@string/_00_00_00_000"
+            android:textAlignment="center"
             android:textColor="#000"
             android:textSize="50sp"
             android:textStyle="bold" />
@@ -67,7 +68,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="TextView"
+            android:textAlignment="center"
             android:textAllCaps="false" />
 
     </RelativeLayout>

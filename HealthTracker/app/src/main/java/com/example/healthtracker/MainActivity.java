@@ -25,18 +25,24 @@ public class MainActivity extends AppCompatActivity {
             "Get Lots of sleep so you can be the most productive.",
             "Eat fruits and veggies to get more energy.", "Stay hydrated!" };
 
+    public int totalClicks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Get Stats
+        SharedPreferences clicks = this.getSharedPreferences(getString(R.string.finger_exercise_stat),Context.MODE_PRIVATE);
+        totalClicks = clicks.getInt(getString(R.string.finger_exercise_stat), 3);
+
         //display user at top
         SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.logged_in_user), Context.MODE_PRIVATE);
         String user = sharedPref.getString(getString(R.string.logged_in_user), "Welcome");
         TextView loggedInUser = findViewById(R.id.textView11);
-        loggedInUser.setText("Welcome " + user);
+        loggedInUser.setText(", Finger Strength: " + totalClicks);
 
+        // Image carousel
         ImageView image = findViewById(R.id.imageView);
         image.setImageResource(sampleImages[imageIndex % sampleImages.length]);
 
@@ -47,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         counter.setText(((imageIndex % sampleImages.length) + 1) + " of " + sampleImages.length);
     }
 
+    //Add username at the top of the page
     public void addLoggedInUser(View v){
 
         EditText loggedInUser = findViewById(R.id.editText3);
@@ -60,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(getIntent());
     }
 
+    //show next image in carousel
     public void imageNextClicked(View v){
 
         imageIndex++;
@@ -73,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         counter.setText(((imageIndex % sampleImages.length) + 1) + " of " + sampleImages.length);
     }
 
+    //show previous button in image carousel
     public void imageBackClicked(View v){
 
         imageIndex--;
@@ -91,16 +100,19 @@ public class MainActivity extends AppCompatActivity {
         startActivity(stopWatch);
     }
 
+    //redirect to finger exercise activity
     public void onFingerExerciseClick(View v) {
         Intent fingerExerciseIntent = new Intent(this, FingerExercises.class);
         startActivity(fingerExerciseIntent);
     }
 
+    //redirect to the notificaitons activity
     public void onRemindersClick(View v) {
         Intent remindersIntent = new Intent(this, Notifications.class);
         startActivity(remindersIntent);
     }
 
+    //redirect to journal activity
     public void onJournalClick(View v) {
         Intent journalIntent = new Intent(this, Journal.class);
         startActivity(journalIntent);
