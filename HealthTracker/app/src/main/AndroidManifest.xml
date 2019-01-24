@@ -32,12 +32,16 @@
         <receiver
             android:name=".NotificationReciever"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true" />
 
         <activity
             android:name=".Journal"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".ImageView"></activity>
+
+        <activity android:name=".ImageView" />
+
+        <activity android:name=".Login"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>
