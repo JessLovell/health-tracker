@@ -95,6 +95,9 @@
 - Day 8:
     - Shared Preferences works!
     - Stats display on the homepage!
+- day 9:
+    - Backend Server has `signup` and `login`
+    - Working on login from application 
 
 
 
