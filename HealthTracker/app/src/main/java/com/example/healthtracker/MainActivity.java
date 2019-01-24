@@ -59,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
 
     //Redirect to Login activity
     public void onLoginClick(View v){
-        
+        Intent loginClick = new Intent(this, Login.class);
+        startActivity(loginClick);
     }
 
     //show next image in carousel
