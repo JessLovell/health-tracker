@@ -28,6 +28,7 @@
     <string name="image_carousel">image carousel</string>
     <string name="logged_in_user">username</string>
     <string name="finger_exercise_stat">finger-exercise-stat</string>
+    <string name="visit_count_stat">visit-count-stat</string>
     <string name="welcome">Welcome</string>
 
 </resources>

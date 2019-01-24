@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
             "Eat fruits and veggies to get more energy.", "Stay hydrated!" };
 
     public int totalClicks;
+    public int visitCount;
     SharedPreferences sharedPref;
 
     @Override
@@ -33,35 +34,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Get Stats
-        sharedPref = this.getSharedPreferences(getString(R.string.logged_in_user), Context.MODE_PRIVATE);
-        totalClicks = sharedPref.getInt(getString(R.string.finger_exercise_stat),0);
-
-        //display user at top
-        String user = sharedPref.getString(getString(R.string.logged_in_user), "Welcome");
-        TextView loggedInUser = findViewById(R.id.textView11);
-        loggedInUser.setText("Welcome " + user + ", Finger Strength: " + totalClicks);
-
-        // Image carousel
-        ImageView image = findViewById(R.id.imageView);
-        image.setImageResource(sampleImages[imageIndex % sampleImages.length]);
-
-        TextView text = findViewById(R.id.textView);
-        text.setText(imageText[imageIndex % sampleImages.length]);
-
-        TextView counter = findViewById(R.id.textView7);
-        counter.setText(((imageIndex % sampleImages.length) + 1) + " of " + sampleImages.length);
+        setResources();
     }
 
     @Override
     protected void onRestart(){
         super.onRestart();
-        totalClicks = sharedPref.getInt(getString(R.string.finger_exercise_stat),0);
-        String user = sharedPref.getString(getString(R.string.logged_in_user), "Welcome");
-        TextView loggedInUser = findViewById(R.id.textView11);
-        loggedInUser.setText("Welcome " + user + ", Finger Strength: " + totalClicks);
-
-
+        setResources();
     }
 
     //Add username at the top of the page
@@ -127,6 +106,36 @@ public class MainActivity extends AppCompatActivity {
     public void onJournalClick(View v) {
         Intent journalIntent = new Intent(this, Journal.class);
         startActivity(journalIntent);
+    }
+
+    public void setResources(){
+
+        sharedPref = this.getSharedPreferences(getString(R.string.logged_in_user), Context.MODE_PRIVATE);
+
+        //update visit count
+        visitCount = sharedPref.getInt(getString(R.string.visit_count_stat),0);
+        visitCount++;
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt(getString(R.string.visit_count_stat), visitCount);
+        editor.commit();
+
+        //Get Stats
+        totalClicks = sharedPref.getInt(getString(R.string.finger_exercise_stat),0);
+
+        //display user at top
+        String user = sharedPref.getString(getString(R.string.logged_in_user), "Welcome");
+        TextView loggedInUser = findViewById(R.id.textView11);
+        loggedInUser.setText("Welcome " + user + ", Finger Strength: " + totalClicks + ", Visits: " + visitCount);
+
+        // Image carousel
+        ImageView image = findViewById(R.id.imageView);
+        image.setImageResource(sampleImages[imageIndex % sampleImages.length]);
+
+        TextView text = findViewById(R.id.textView);
+        text.setText(imageText[imageIndex % sampleImages.length]);
+
+        TextView counter = findViewById(R.id.textView7);
+        counter.setText(((imageIndex % sampleImages.length) + 1) + " of " + sampleImages.length);
     }
 }
 
