@@ -1,6 +1,6 @@
 # Health Tracker
 ## Features
-:heavy_check_mark: | Feature | Description
+:white_check_mark: | Feature | Description
 ---- | --- | ---
 :white_check_mark: | **Finger Exercises:** | One key part of health is building finger strength and endurance. On the main page, display a number and a button. The number should increase when the button is clicked.
 :white_check_mark: | **Stopwatch:** | Still on the main page, add a stopwatch. Have a button to `Start/Pause` and `Reset` the clock. The start/pause button should toggle between saying “start” and “pause.” And you should only be able to reset when the stopwatch is paused.
@@ -98,9 +98,3 @@
 - day 9:
     - Backend Server has `signup` and `login`
     - Working on login from application 
-
-
-
-
-
-
