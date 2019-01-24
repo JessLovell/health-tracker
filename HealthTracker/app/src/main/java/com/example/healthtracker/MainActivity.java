@@ -34,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Get Stats
-        SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.logged_in_user), Context.MODE_PRIVATE);
+        sharedPref = this.getSharedPreferences(getString(R.string.logged_in_user), Context.MODE_PRIVATE);
         totalClicks = sharedPref.getInt(getString(R.string.finger_exercise_stat),0);
-        
+
         //display user at top
         String user = sharedPref.getString(getString(R.string.logged_in_user), "Welcome");
         TextView loggedInUser = findViewById(R.id.textView11);
@@ -51,6 +51,17 @@ public class MainActivity extends AppCompatActivity {
 
         TextView counter = findViewById(R.id.textView7);
         counter.setText(((imageIndex % sampleImages.length) + 1) + " of " + sampleImages.length);
+    }
+
+    @Override
+    protected void onRestart(){
+        super.onRestart();
+        totalClicks = sharedPref.getInt(getString(R.string.finger_exercise_stat),0);
+        String user = sharedPref.getString(getString(R.string.logged_in_user), "Welcome");
+        TextView loggedInUser = findViewById(R.id.textView11);
+        loggedInUser.setText("Welcome " + user + ", Finger Strength: " + totalClicks);
+
+
     }
 
     //Add username at the top of the page

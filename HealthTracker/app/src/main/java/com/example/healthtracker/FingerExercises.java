@@ -11,9 +11,9 @@ import android.widget.TextView;
 
 public class FingerExercises extends AppCompatActivity {
 
-    private SharedPreferences clicks;
     private int totalClicks;
     private TextView reps;
+    SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +21,10 @@ public class FingerExercises extends AppCompatActivity {
         setContentView(R.layout.activity_finger_exercises);
 
         // Get username
-        SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.logged_in_user), Context.MODE_PRIVATE);
+        sharedPref = this.getSharedPreferences(getString(R.string.logged_in_user), Context.MODE_PRIVATE);
         String user = sharedPref.getString(getString(R.string.logged_in_user), "Welcome");
         TextView loggedInUser = findViewById(R.id.textView8);
         loggedInUser.setText("Welcome " + user);
-
-        clicks = sharedPref;
 
         // Intitalize clicks counter
         totalClicks = sharedPref.getInt(getString(R.string.finger_exercise_stat),0);
@@ -52,7 +50,7 @@ public class FingerExercises extends AppCompatActivity {
         reps.setText(totalClicks + "");
 
         //save to shared preferences
-        SharedPreferences.Editor editor = clicks.edit();
+        SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt(getString(R.string.finger_exercise_stat), totalClicks);
         editor.commit();
     }
