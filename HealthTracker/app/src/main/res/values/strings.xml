@@ -38,5 +38,6 @@
     <string name="login">Login</string>
     <string name="account_login">Account Login</string>
     <string name="Loginusername">Username:</string>
+    <string name="Stored_cookie">Default</string>
 
 </resources>
