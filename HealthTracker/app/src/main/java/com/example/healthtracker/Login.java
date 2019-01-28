@@ -26,13 +26,14 @@ import java.util.Map;
 public class Login extends AppCompatActivity {
 
     SharedPreferences sharedPref;
+    CookieManager cookieManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        CookieManager cookieManager = new CookieManager();
+        cookieManager = new CookieManager();
         CookieHandler.setDefault(cookieManager);
 
         sharedPref= this.getSharedPreferences(getString(R.string.logged_in_user), Context.MODE_PRIVATE);
@@ -80,19 +81,16 @@ public class Login extends AppCompatActivity {
                 // since we don't know which of the two underlying network vehicles
                 // will Volley use, we have to handle and store session cookies manually
                 Log.i("response",response.headers.toString());
-//                Map<String, String> responseHeaders = response.headers;
-//                String rawCookies = responseHeaders.get("Set-Cookie");
+                String rawCookies = cookieManager.getCookieStore().getCookies().toString();
 
-                //save to shared pref
-//                SharedPreferences.Editor editor = sharedPref.edit();
-//                editor.putString(getString(R.string.Stored_cookie), rawCookies);
-//                editor.commit();
-//
-//
-//                Log.i("cookies", sharedPref.getString(getString(R.string.Stored_cookie), "cocoloco"));
+//                save to shared pref
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString(getString(R.string.Stored_cookie), rawCookies);
+                editor.commit();
+
+                Log.i("cookies", sharedPref.getString(getString(R.string.Stored_cookie), "cocoloco"));
                 return super.parseNetworkResponse(response);
             }
-
         };
 
         // Add the request to the RequestQueue.

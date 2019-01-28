@@ -46,6 +46,7 @@
 - [Location Pretty Print](https://stackoverflow.com/questions/22323974/how-to-get-city-name-by-latitude-longitude-in-android) Second Comment
 - [Hiding Android fields](https://stackoverflow.com/questions/4622517/hide-a-edittext-make-it-visible-by-clicking-a-menu)
 - [Shared Preferences](https://developer.android.com/training/data-storage/shared-preferences#java)
+- [Storing Cookies]()
 
 
 ### Images

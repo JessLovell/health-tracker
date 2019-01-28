@@ -35,6 +35,8 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.net.CookieHandler;
+import java.net.CookieManager;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -54,7 +56,6 @@ public class Journal extends AppCompatActivity {
     private String exerciseLocation;
 
     private final int MY_PERMISSIONS_REQUEST_LOCATIONS = 1896;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
