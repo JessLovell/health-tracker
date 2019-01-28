@@ -17,8 +17,8 @@
 :x: |**Camera:** | Add the ability for users to enter a profile picture. Give them the option of taking a new photo with the camera, or using images already on their phone. Your app will need to request the appropriate permissions for this. Once users take a profile picture, you should display it on the homescreen.
 :heavy_check_mark: | **Location:** | When a user adds an exercise, they should be able to include their current location.
 :heavy_check_mark: | **SharedPrefs:** | Ensure that the user’s username is correctly displayed throughout the app. Also, modify the homepage to include some key stats, such as the current finger exercise count and the total number of times the user has visited the homepage.
-:white_check_mark: | **Auth on the backend:** | Add auth to your Spring backend, so that users can log in. Require users to be logged in to post an Exercise, and associate users and exercises.
-:x: | **SharedPrefs for login:** | Allow the user to log in to your app, using the login functionality for the backend. Store their token in SharedPrefs, and ensure it’s secret.
+:heavy_check_mark: | **Auth on the backend:** | Add auth to your Spring backend, so that users can log in. Require users to be logged in to post an Exercise, and associate users and exercises.
+:white_check_mark: | **SharedPrefs for login:** | Allow the user to log in to your app, using the login functionality for the backend. Store their token in SharedPrefs, and ensure it’s secret.
 
 ![Home Page of HealthTracker](/resources/home_page.png)
 ![Finger Exerciser Page](/resources/finger_ex.png)
@@ -46,7 +46,9 @@
 - [Location Pretty Print](https://stackoverflow.com/questions/22323974/how-to-get-city-name-by-latitude-longitude-in-android) Second Comment
 - [Hiding Android fields](https://stackoverflow.com/questions/4622517/hide-a-edittext-make-it-visible-by-clicking-a-menu)
 - [Shared Preferences](https://developer.android.com/training/data-storage/shared-preferences#java)
-- [Storing Cookies]()
+- [Storing Cookies](https://stackoverflow.com/questions/12707655/store-cookie-in-sharedpreferences)
+- [Cookies on Restart](https://medium.com/@elye.project/a-tale-on-android-cookies-store-management-b04832ca18c6)
+
 
 
 ### Images
@@ -98,4 +100,7 @@
     - Stats display on the homepage!
 - Day 9:
     - Backend Server has `signup` and `login`
-    - Working on login from application 
+    - Working on login from application
+- Day 10:
+    - User can login and add exercise.
+    - If the app is closed, the user will have to re-login to the application. 
